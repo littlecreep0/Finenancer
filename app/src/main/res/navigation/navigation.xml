@@ -8,43 +8,43 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="lc.wise.finenancer.presentation.home.HomeFragment"
-        android:label="fragment_home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_assetsListFragment"
             app:destination="@id/assetsListFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_homeFragment_to_portfolioListFragment"
             app:destination="@id/portfolioListFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_homeFragment_to_settingsFragment"
             app:destination="@id/settingsFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/assetsListFragment"
         android:name="lc.wise.finenancer.presentation.assets.list.AssetsListFragment"
-        android:label="fragment_assets_list"
+        android:label="Assets List"
         tools:layout="@layout/fragment_assets_list" />
     <fragment
         android:id="@+id/portfolioListFragment"
         android:name="lc.wise.finenancer.presentation.portfolio.list.PortfolioListFragment"
-        android:label="fragment_portfolio_list"
+        android:label="Portfolio List"
         tools:layout="@layout/fragment_portfolio_list" />
     <fragment
         android:id="@+id/settingsFragment"
         android:name="lc.wise.finenancer.presentation.settings.SettingsFragment"
-        android:label="fragment_settings"
+        android:label="Settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>
