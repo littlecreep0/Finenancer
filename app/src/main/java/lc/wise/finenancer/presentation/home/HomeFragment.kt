@@ -7,7 +7,7 @@ import lc.wise.finenancer.databinding.FragmentHomeBinding
 import lc.wise.finenancer.presentation.BaseFragment
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
-    override fun getViewBinding(): FragmentHomeBinding = FragmentHomeBinding.inflate(layoutInflater)
+    override fun inflateBinding() = FragmentHomeBinding.inflate(layoutInflater)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
