@@ -11,7 +11,7 @@ interface PortfolioCashInterface : CurrencyInterface {
     fun calculateValue(): Double
 }
 
-interface PortfolioSecurityInterface : AssetInterface {
+interface PortfolioStockInterface : AssetInterface {
     var amount: Double
     var price: Double
     var currency: String
@@ -34,7 +34,7 @@ data class Cash(
     }
 }
 
-data class Security(
+data class Stock(
     override val id: Int, //айди 1
     override val name: String, //акция ГазПрома
     override val totalAmount: Double, //всего 23_673_512_900 акций
@@ -42,7 +42,7 @@ data class Security(
     override var price: Double, //стоимость одной 10_000
     override var currency: String, //российских рублей RUB
     override var date: Date,
-) : PortfolioSecurityInterface {
+) : PortfolioStockInterface {
     override var priceHistory: MutableMap<Date, Double> = mutableMapOf(date to price)
     override fun calculateValue(): Double {
         return amount * price

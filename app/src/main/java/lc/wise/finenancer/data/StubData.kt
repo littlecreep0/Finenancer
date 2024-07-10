@@ -3,7 +3,7 @@ package lc.wise.finenancer.data
 import lc.wise.finenancer.domain.entities.Asset
 import lc.wise.finenancer.domain.entities.Cash
 import lc.wise.finenancer.domain.entities.Currency
-import lc.wise.finenancer.domain.entities.Security
+import lc.wise.finenancer.domain.entities.Stock
 import java.util.Date
 
 object StubData {
@@ -25,7 +25,7 @@ object StubData {
         Cash(1, "USD", 100.0, 1.0, "USD", Date())
     )
 
-    var portfolioSecurityList: MutableList<Security> = mutableListOf(
-        Security(1, "GazProm", 23_673_512_900.0, 2.0, 10_000.0, "RUB", Date())
+    var portfolioStockList: MutableList<Stock> = mutableListOf(
+        Stock(1, "GazProm", 23_673_512_900.0, 2.0, 10_000.0, "RUB", Date())
     )
 }
