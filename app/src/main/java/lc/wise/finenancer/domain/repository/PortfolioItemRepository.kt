@@ -2,14 +2,14 @@ package lc.wise.finenancer.domain.repository
 
 import lc.wise.finenancer.data.StubData
 import lc.wise.finenancer.domain.entities.Cash
-import lc.wise.finenancer.domain.entities.Security
+import lc.wise.finenancer.domain.entities.Stock
 
 interface PortfolioItemsRepositoryInterface {
     fun getCashByID(cashID: Int): Cash?
     fun getAllCashes(): MutableList<Cash>
 
-    fun getSecurityByID(securityID: Int): Security?
-    fun getAllSecurities(): MutableList<Security>
+    fun getStockByID(stockID: Int): Stock?
+    fun getAllStocks(): MutableList<Stock>
 }
 
 class PortfolioItemsRepository: PortfolioItemsRepositoryInterface{
@@ -21,11 +21,11 @@ class PortfolioItemsRepository: PortfolioItemsRepositoryInterface{
         return StubData.portfolioCashList
     }
 
-    override fun getSecurityByID(securityID: Int): Security? {
-        return StubData.portfolioSecurityList.find { it.id == securityID }
+    override fun getStockByID(stockID: Int): Stock? {
+        return StubData.portfolioStockList.find { it.id == stockID }
     }
 
-    override fun getAllSecurities(): MutableList<Security> {
-        return StubData.portfolioSecurityList
+    override fun getAllStocks(): MutableList<Stock> {
+        return StubData.portfolioStockList
     }
 }
