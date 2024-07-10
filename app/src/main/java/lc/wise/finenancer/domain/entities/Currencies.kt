@@ -1,27 +1,11 @@
-abstract class Currencies: Assets(){
-    override val name: String
-    override var price: Double
-    override var amount: Double
+package lc.wise.finenancer.domain.entities
 
-    private val date: Date = Date()
-    override var priceHistory: MutableMap<Date, Double> =  mutableMapOf(date to price)
-
-    override fun calculateValue(): Double{
-        return amount * price
-    }
+interface CurrencyInterface {
+    val id: Int
+    val name: String
 }
 
-data class USD: Currencies(){
-    override val name: String = "USD"
-    override val price: Double = 1
-}
-
-data class BYN: Currencies(){
-    override val name: String = "BYN"
-    override val price: Double = 0.3
-}
-
-data class EUR: Currencies(){
-    override val name: String = "EUR
-    override val price: Double = 1.1
-}
+data class Currency(
+    override val id: Int,
+    override val name: String,
+) : CurrencyInterface

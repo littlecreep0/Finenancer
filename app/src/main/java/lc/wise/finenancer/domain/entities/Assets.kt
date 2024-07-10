@@ -1,11 +1,13 @@
-abstract class Assets {
-    abstract val name: String
-    abstract var price: Double
-    abstract var amount: Double
+package lc.wise.finenancer.domain.entities
 
-    var nameOfDefaultCurrency: String = "USD"
-
-    abstract var priceHistory: MutableMap<Date, Double>
-
-    abstract fun calculateValue(): Double
+interface AssetInterface {
+    val id: Int
+    val name: String
+    val totalAmount: Double
 }
+
+data class Asset(
+    override val id: Int,
+    override val name: String,
+    override val totalAmount: Double,
+) : AssetInterface
