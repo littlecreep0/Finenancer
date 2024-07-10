@@ -7,9 +7,7 @@ buildscript {
     }
     apply from: '../code_style/ktlint.gradle'
     apply from: '../code_quality/detekt.gradle'
-    //apply from: '../scripts/git_hook.gradle'
-    // with [:app:preBuild -> build] change git_hook compiles but still doesn't work
-    // linter still needs to be triggered manually
+    apply from: '../scripts/git_hook.gradle'
 }
 
 plugins {
