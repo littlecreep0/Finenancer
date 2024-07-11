@@ -1,7 +1,5 @@
 package lc.wise.finenancer.domain.entity
 
-import java.util.Date
-
 interface IPortfolioCash : ICurrency {
     var worth: Double
 }

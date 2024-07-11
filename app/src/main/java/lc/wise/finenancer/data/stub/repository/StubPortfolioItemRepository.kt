@@ -3,22 +3,18 @@ package lc.wise.finenancer.data.stub.repository
 import lc.wise.finenancer.data.stub.StubData
 import lc.wise.finenancer.domain.entity.Cash
 import lc.wise.finenancer.domain.entity.Stock
-import lc.wise.finenancer.domain.repository.IPortfolioItemsRepository
+import lc.wise.finenancer.domain.repository.PortfolioItemsRepository
 
-class PortfolioItemsRepository : IPortfolioItemsRepository {
-    override fun getCashByID(cashID: Int): Cash? {
-        return StubData.portfolioCashList.find { it.id == cashID }
-    }
+class PortfolioItemsRepository : PortfolioItemsRepository {
+    override fun getCashByID(cashID: Int): Cash? =
+        StubData.portfolioCashList.find { it.id == cashID }
 
-    override fun getAllCashes(): List<Cash> {
-        return StubData.portfolioCashList
-    }
+    override fun getAllCashes(): List<Cash> =
+        StubData.portfolioCashList
 
-    override fun getStockByID(stockID: Int): Stock? {
-        return StubData.portfolioStockList.find { it.id == stockID }
-    }
+    override fun getStockByID(stockID: Int): Stock? =
+        StubData.portfolioStockList.find { it.id == stockID }
 
-    override fun getAllStocks(): List<Stock> {
-        return StubData.portfolioStockList
-    }
+    override fun getAllStocks(): List<Stock> =
+        StubData.portfolioStockList
 }
