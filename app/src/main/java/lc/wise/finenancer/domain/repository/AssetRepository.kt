@@ -1,19 +1,8 @@
 package lc.wise.finenancer.domain.repository
 
-import lc.wise.finenancer.data.StubData
-import lc.wise.finenancer.domain.entities.Asset
+import lc.wise.finenancer.domain.entity.Asset
 
-interface AssetRepositoryInterface {
+interface IAssetRepository {
     fun getAssetByID(assetID: Int): Asset?
-    fun getAllAssets(): MutableList<Asset>
-}
-
-class AssetRepository : AssetRepositoryInterface {
-    override fun getAssetByID(assetID: Int): Asset? {
-        return StubData.assetList.find { it.id == assetID }
-    }
-
-    override fun getAllAssets(): MutableList<Asset> {
-        return StubData.assetList
-    }
+    fun getAllAssets(): List<Asset>
 }

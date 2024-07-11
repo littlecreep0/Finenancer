@@ -1,6 +1,6 @@
-package lc.wise.finenancer.domain.entities
+package lc.wise.finenancer.domain.entity
 
-interface CurrencyInterface {
+interface ICurrency {
     val id: Int
     val name: String
 }
@@ -8,4 +8,4 @@ interface CurrencyInterface {
 data class Currency(
     override val id: Int,
     override val name: String,
-) : CurrencyInterface
+) : ICurrency
