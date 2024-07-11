@@ -9,5 +9,5 @@ interface IAsset {
 data class Asset(
     override val id: Int,
     override val name: String,
-    override val totalAmount: Double,
+    override val totalAmount: Double
 ) : IAsset

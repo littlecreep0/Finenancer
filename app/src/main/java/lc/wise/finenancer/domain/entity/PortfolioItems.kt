@@ -7,7 +7,7 @@ interface IPortfolioCash : ICurrency {
 data class Cash(
     override val id: Int,
     override val name: String,
-    override var worth: Double,
+    override var worth: Double
 ) : IPortfolioCash
 
 interface IPortfolioStock : IAsset {
@@ -18,5 +18,5 @@ data class Stock(
     override val id: Int,
     override val name: String,
     override val totalAmount: Double,
-    override var worth: Double,
+    override var worth: Double
 ) : IPortfolioStock

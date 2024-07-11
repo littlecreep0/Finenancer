@@ -7,12 +7,12 @@ interface PortfolioItemDetailsRepository {
     fun createCashDetails()
     fun getCashDetailsByID(cashDetailsID: Int): CashDetails?
     fun getAllCashDetails(): List<CashDetails>
-    fun updateCashDetails(cashDetailsID: Int): CashDetails?
-    fun deleteCashDetails(cashDetailsID: Int): CashDetails?
+//    fun updateCashDetails(cashDetailsID: Int): CashDetails?
+//    fun deleteCashDetails(cashDetailsID: Int): CashDetails?
 
     fun createStockDetails()
     fun getStockDetailsByID(stockDetailsID: Int): StockDetails?
     fun getAllStockDetails(): List<StockDetails>
-    fun updateStockDetails(stockDetailsID: Int): StockDetails?
-    fun deleteStockDetails(stockDetailsID: Int): StockDetails?
+//    fun updateStockDetails(stockDetailsID: Int): StockDetails?
+//    fun deleteStockDetails(stockDetailsID: Int): StockDetails?
 }

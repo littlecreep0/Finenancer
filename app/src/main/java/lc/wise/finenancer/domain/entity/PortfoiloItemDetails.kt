@@ -18,7 +18,7 @@ data class CashDetails(
     override var amount: Double,
     override var price: Double,
     override var currency: String,
-    override var date: Date,
+    override var date: Date
 ) : ICashDetails {
     override var priceHistory: MutableMap<Date, Double> = mutableMapOf(date to price)
     override fun calculateWorth(): Double {
@@ -43,7 +43,7 @@ data class StockDetails(
     override var amount: Double,
     override var price: Double,
     override var currency: String,
-    override var date: Date,
+    override var date: Date
 ) : IStockDetails {
     override var priceHistory: MutableMap<Date, Double> = mutableMapOf(date to price)
     override fun calculateWorth(): Double {

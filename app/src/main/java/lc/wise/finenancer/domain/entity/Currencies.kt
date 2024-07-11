@@ -7,5 +7,5 @@ interface ICurrency {
 
 data class Currency(
     override val id: Int,
-    override val name: String,
+    override val name: String
 ) : ICurrency
