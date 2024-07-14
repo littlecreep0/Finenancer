@@ -36,12 +36,28 @@
         android:id="@+id/assetsListFragment"
         android:name="lc.wise.finenancer.presentation.assets.list.AssetsListFragment"
         android:label="Assets List"
-        tools:layout="@layout/fragment_assets_list" />
+        tools:layout="@layout/fragment_assets_list" >
+        <action
+            android:id="@+id/action_assetsListFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/portfolioListFragment"
         android:name="lc.wise.finenancer.presentation.portfolio.list.PortfolioListFragment"
         android:label="Portfolio List"
-        tools:layout="@layout/fragment_portfolio_list" />
+        tools:layout="@layout/fragment_portfolio_list" >
+        <action
+            android:id="@+id/action_portfolioListFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="lc.wise.finenancer.presentation.settings.SettingsFragment"

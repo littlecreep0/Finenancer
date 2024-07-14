@@ -1,4 +1,4 @@
-package lc.wise.finenancer.presentation
+package lc.wise.finenancer.presentation.utils
 
 import android.os.Bundle
 import android.view.LayoutInflater
