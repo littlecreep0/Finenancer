@@ -3,22 +3,10 @@ package lc.wise.finenancer.presentation.portfolio.list.rv
 import androidx.recyclerview.widget.DiffUtil
 import lc.wise.finenancer.domain.entity.Portfolio
 
-class PortfolioListDiffUtil(
-    private val oldPortfolioList: List<Portfolio>,
-    private val newPortfolioList: List<Portfolio>
-) : DiffUtil.Callback() {
-    override fun getOldListSize() = oldPortfolioList.size
-    override fun getNewListSize() = newPortfolioList.size
+class PortfolioListDiffUtil : DiffUtil.ItemCallback<Portfolio>() {
+    override fun areItemsTheSame(oldItem: Portfolio, newItem: Portfolio): Boolean =
+        oldItem == newItem
 
-    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        val oldPortfolio = oldPortfolioList[oldItemPosition]
-        val newPortfolio = newPortfolioList[newItemPosition]
-        return oldPortfolio.id == newPortfolio.id
-    }
-
-    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        val oldPortfolio = oldPortfolioList[oldItemPosition]
-        val newPortfolio = newPortfolioList[newItemPosition]
-        return oldPortfolio == newPortfolio
-    }
+    override fun areContentsTheSame(oldItem: Portfolio, newItem: Portfolio): Boolean =
+        oldItem == newItem
 }

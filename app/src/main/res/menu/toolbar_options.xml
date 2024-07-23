@@ -5,25 +5,25 @@
     <item
         android:id="@+id/toolbar_options_create"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="Create New"
+        android:title="@string/create"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/toolbar_options_edit"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="Edit Existing"
+        android:title="@string/edit"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/toolbar_options_delete"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="Delete Existing"
+        android:title="@string/delete"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/toolbar_options_settings"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="App Settings"
+        android:title="@string/settings"
         app:showAsAction="never" />
 
 </menu>

@@ -18,14 +18,21 @@ class AssetsListFragment : BaseFragment<FragmentAssetsListBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setupAdapter()
+
+        setHasOptionsMenu(true)
+    }
+
+    private fun setupAdapter() {
         val adapter = AssetsListAdapter()
         binding.assetsList.adapter = adapter
 
-        // !! the following code is used to show that the recycler view works
+        // !! THE FOLLOWING CODE JUST SHOWS THAT THE RECYCLERVIEW WORKS
         // proper inflation with viewmodel + dependency injection + hilt
         // will be introduced in a separate PR
         val assetsList = StubData.assetList
-        adapter.submit(assetsList)
+        adapter.submitList(assetsList)
         adapter.onClick = {
             Toast.makeText(
                 requireActivity(),
@@ -33,8 +40,6 @@ class AssetsListFragment : BaseFragment<FragmentAssetsListBinding>() {
                 Toast.LENGTH_SHORT
             ).show()
         }
-
-        setHasOptionsMenu(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -51,6 +56,7 @@ class AssetsListFragment : BaseFragment<FragmentAssetsListBinding>() {
                 ).show()
                 true
             }
+
             R.id.toolbar_options_edit -> {
                 Toast.makeText(
                     requireActivity(),
@@ -59,6 +65,7 @@ class AssetsListFragment : BaseFragment<FragmentAssetsListBinding>() {
                 ).show()
                 true
             }
+
             R.id.toolbar_options_delete -> {
                 Toast.makeText(
                     requireActivity(),
@@ -67,12 +74,14 @@ class AssetsListFragment : BaseFragment<FragmentAssetsListBinding>() {
                 ).show()
                 true
             }
+
             R.id.toolbar_options_settings -> {
                 findNavController().navigate(
                     AssetsListFragmentDirections.actionAssetsListFragmentToSettingsFragment()
                 )
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

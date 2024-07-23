@@ -2,23 +2,14 @@ package lc.wise.finenancer.presentation.portfolio.list.rv
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ListAdapter
 import lc.wise.finenancer.databinding.ItemPortfolioBinding
 import lc.wise.finenancer.domain.entity.Portfolio
 
-class PortfolioListAdapter : RecyclerView.Adapter<PortfolioListViewHolder>() {
+class PortfolioListAdapter :
+    ListAdapter<Portfolio, PortfolioListViewHolder>(PortfolioListDiffUtil()) {
 
     var onClick: (Portfolio) -> Unit = {}
-    private var portfolioList = emptyList<Portfolio>()
-    override fun getItemCount() = portfolioList.size
-
-    fun submit(newPortfolioList: List<Portfolio>) {
-        val diffCallback = PortfolioListDiffUtil(portfolioList, newPortfolioList)
-        val diffAssets = DiffUtil.calculateDiff(diffCallback)
-        portfolioList = newPortfolioList
-        diffAssets.dispatchUpdatesTo(this)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PortfolioListViewHolder {
         return PortfolioListViewHolder(
@@ -27,6 +18,6 @@ class PortfolioListAdapter : RecyclerView.Adapter<PortfolioListViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: PortfolioListViewHolder, position: Int) {
-        holder.bind(portfolioList[position], onClick)
+        holder.bind(getItem(position), onClick)
     }
 }

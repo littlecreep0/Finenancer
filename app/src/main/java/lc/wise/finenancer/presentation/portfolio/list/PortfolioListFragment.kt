@@ -18,6 +18,13 @@ class PortfolioListFragment : BaseFragment<FragmentPortfolioListBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setupAdapter()
+
+        setHasOptionsMenu(true)
+    }
+
+    private fun setupAdapter() {
         val adapter = PortfolioListAdapter()
         binding.portfolioList.adapter = adapter
 
@@ -25,7 +32,7 @@ class PortfolioListFragment : BaseFragment<FragmentPortfolioListBinding>() {
         // proper inflation with viewmodel + dependency injection + hilt
         // will be introduced in a separate PR
         val portfolioList = StubData.portfolioList
-        adapter.submit(portfolioList)
+        adapter.submitList(portfolioList)
         adapter.onClick = {
             Toast.makeText(
                 requireActivity(),
@@ -33,8 +40,6 @@ class PortfolioListFragment : BaseFragment<FragmentPortfolioListBinding>() {
                 Toast.LENGTH_SHORT
             ).show()
         }
-
-        setHasOptionsMenu(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -51,6 +56,7 @@ class PortfolioListFragment : BaseFragment<FragmentPortfolioListBinding>() {
                 ).show()
                 true
             }
+
             R.id.toolbar_options_edit -> {
                 Toast.makeText(
                     requireActivity(),
@@ -59,6 +65,7 @@ class PortfolioListFragment : BaseFragment<FragmentPortfolioListBinding>() {
                 ).show()
                 true
             }
+
             R.id.toolbar_options_delete -> {
                 Toast.makeText(
                     requireActivity(),
@@ -67,12 +74,14 @@ class PortfolioListFragment : BaseFragment<FragmentPortfolioListBinding>() {
                 ).show()
                 true
             }
+
             R.id.toolbar_options_settings -> {
                 findNavController().navigate(
                     PortfolioListFragmentDirections.actionPortfolioListFragmentToSettingsFragment()
                 )
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

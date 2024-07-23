@@ -2,23 +2,13 @@ package lc.wise.finenancer.presentation.assets.list.rv
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.ListAdapter
 import lc.wise.finenancer.databinding.ItemAssetBinding
 import lc.wise.finenancer.domain.entity.Asset
 
-class AssetsListAdapter : Adapter<AssetsListViewHolder>() {
+class AssetsListAdapter : ListAdapter<Asset, AssetsListViewHolder>(AssetsListDiffUtil()) {
 
     var onClick: (Asset) -> Unit = {}
-    private var assetList = emptyList<Asset>()
-    override fun getItemCount() = assetList.size
-
-    fun submit(newAssetList: List<Asset>) {
-        val diffCallback = AssetsListDiffUtil(assetList, newAssetList)
-        val diffAssets = DiffUtil.calculateDiff(diffCallback)
-        assetList = newAssetList
-        diffAssets.dispatchUpdatesTo(this)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AssetsListViewHolder {
         return AssetsListViewHolder(
@@ -27,6 +17,6 @@ class AssetsListAdapter : Adapter<AssetsListViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: AssetsListViewHolder, position: Int) {
-        holder.bind(assetList[position], onClick)
+        holder.bind(getItem(position), onClick)
     }
 }
