@@ -1,12 +1,13 @@
 package lc.wise.finenancer.data.stub
 
+import java.util.Date
 import lc.wise.finenancer.domain.entity.Asset
 import lc.wise.finenancer.domain.entity.Cash
 import lc.wise.finenancer.domain.entity.CashDetails
 import lc.wise.finenancer.domain.entity.Currency
+import lc.wise.finenancer.domain.entity.Portfolio
 import lc.wise.finenancer.domain.entity.Stock
 import lc.wise.finenancer.domain.entity.StockDetails
-import java.util.Date
 
 object StubData {
     val currencyList: List<Currency> = listOf(
@@ -38,4 +39,14 @@ object StubData {
     val StockDetailsList: List<StockDetails> = listOf(
         StockDetails(1, "GazProm", 23_673_512_900.0, 20_000.0, 2.0, 10_000.0, "RUB", Date())
     )
+
+    val portfolioList: List<Portfolio> = listOf(
+        Portfolio(1, "Portfolio 1", portfolioCashList, portfolioStockList),
+        Portfolio(2, "Portfolio 2", portfolioCashList, portfolioStockList),
+        Portfolio(3, "Portfolio 3", portfolioCashList, portfolioStockList),
+        Portfolio(4, "Portfolio 4", portfolioCashList, portfolioStockList),
+        Portfolio(5, "Portfolio 5", portfolioCashList, portfolioStockList),
+        Portfolio(6, "Portfolio 6", portfolioCashList, portfolioStockList)
+    )
+    // yes, just one portfolio planned, but...
 }

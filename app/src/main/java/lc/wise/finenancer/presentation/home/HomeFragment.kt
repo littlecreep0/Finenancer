@@ -1,10 +1,14 @@
 package lc.wise.finenancer.presentation.home
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.navigation.fragment.findNavController
+import lc.wise.finenancer.R
 import lc.wise.finenancer.databinding.FragmentHomeBinding
-import lc.wise.finenancer.presentation.BaseFragment
+import lc.wise.finenancer.presentation.utils.BaseFragment
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun inflateBinding() = FragmentHomeBinding.inflate(layoutInflater)
@@ -12,21 +16,36 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            assetsList.setOnClickListener {
+            buttonAssetsList.setOnClickListener {
                 findNavController().navigate(
                     HomeFragmentDirections.actionHomeFragmentToAssetsListFragment()
                 )
             }
-            portfolioList.setOnClickListener {
+            buttonPortfolioList.setOnClickListener {
                 findNavController().navigate(
                     HomeFragmentDirections.actionHomeFragmentToPortfolioListFragment()
                 )
             }
-            settings.setOnClickListener {
+        }
+
+        // this also should be moved to home fragment viewmodel
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.home_fragment_settings, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.home_toolbar_settings -> {
                 findNavController().navigate(
                     HomeFragmentDirections.actionHomeFragmentToSettingsFragment()
                 )
-            } // we're doing it as a button on home screen for now but it being always
-        } // available in the toolbar with back button and fragment name is cooler
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
