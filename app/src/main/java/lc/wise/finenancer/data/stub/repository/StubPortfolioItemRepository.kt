@@ -1,11 +1,12 @@
 package lc.wise.finenancer.data.stub.repository
 
+import javax.inject.Inject
 import lc.wise.finenancer.data.stub.StubData
 import lc.wise.finenancer.domain.entity.Cash
 import lc.wise.finenancer.domain.entity.Stock
 import lc.wise.finenancer.domain.repository.PortfolioItemRepository
 
-class StubPortfolioItemRepository : PortfolioItemRepository {
+class StubPortfolioItemRepository @Inject constructor() : PortfolioItemRepository {
     override fun createCash() {}
 
     override fun getCashByID(cashID: Int): Cash? =

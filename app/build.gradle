@@ -4,6 +4,7 @@ buildscript {
     }
     dependencies {
         classpath libs.androidx.navigation.safe.args.gradle.plugin
+        classpath libs.hilt.android.gradle.plugin
     }
     apply from: '../code_style/ktlint.gradle'
     apply from: '../code_quality/detekt.gradle'
@@ -14,6 +15,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.androidx.navigation.safeargs)
+    alias(libs.plugins.dagger.hilt.android)
+    alias(libs.plugins.jetbrains.kotlin.kapt)
 }
 
 android {
@@ -57,7 +60,13 @@ dependencies {
     implementation libs.androidx.constraintlayout
     implementation libs.androidx.navigation.fragment
     implementation libs.androidx.navigation.ui
+    implementation libs.hilt.android
+    kapt libs.hilt.compiler
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
+}
+
+kapt {
+    correctErrorTypes true
 }

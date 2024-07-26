@@ -6,14 +6,16 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import lc.wise.finenancer.R
-import lc.wise.finenancer.data.stub.StubData
 import lc.wise.finenancer.databinding.FragmentPortfolioListBinding
 import lc.wise.finenancer.presentation.portfolio.list.rv.PortfolioListAdapter
 import lc.wise.finenancer.presentation.utils.BaseFragment
-
+@AndroidEntryPoint
 class PortfolioListFragment : BaseFragment<FragmentPortfolioListBinding>() {
+    private val viewModel: PortfolioListViewModel by viewModels()
     override fun inflateBinding() = FragmentPortfolioListBinding.inflate(layoutInflater)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,11 +30,10 @@ class PortfolioListFragment : BaseFragment<FragmentPortfolioListBinding>() {
         val adapter = PortfolioListAdapter()
         binding.portfolioList.adapter = adapter
 
-        // !! THE FOLLOWING CODE JUST SHOWS THAT THE RECYCLERVIEW WORKS
-        // proper inflation with viewmodel + dependency injection + hilt
-        // will be introduced in a separate PR
-        val portfolioList = StubData.portfolioList
-        adapter.submitList(portfolioList)
+        viewModel.portfolioList.observe(viewLifecycleOwner) { portfolio ->
+            portfolio?.let { adapter.submitList(portfolio) }
+        }
+
         adapter.onClick = {
             Toast.makeText(
                 requireActivity(),
