@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.Locale
 import lc.wise.finenancer.R
 import lc.wise.finenancer.databinding.FragmentAssetDetailsBinding
 import lc.wise.finenancer.presentation.utils.BaseFragment
@@ -37,8 +38,22 @@ class AssetDetailsFragment : BaseFragment<FragmentAssetDetailsBinding>() {
             asset?.let {
                 with(binding) {
                     assetName.text = asset.name
-                    assetTotalAmount.text = "Total Amount: ${asset.totalAmount}"
+                    assetTotalAmount.text = String.format(
+                        Locale.ENGLISH,
+                        "Total Amount: %,.2f",
+                        asset.totalAmount
+                    )
                 }
+            }
+        }
+
+        viewModel.toast.observe(viewLifecycleOwner) { toast ->
+            toast?.let {
+                Toast.makeText(
+                    requireActivity(),
+                    it,
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

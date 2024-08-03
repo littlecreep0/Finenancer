@@ -58,6 +58,16 @@ class PortfolioDetailsFragment : BaseFragment<FragmentPortfolioDetailsBinding>()
                 )
             }
         }
+
+        viewModel.toast.observe(viewLifecycleOwner) { toast ->
+            toast?.let {
+                Toast.makeText(
+                    requireActivity(),
+                    it,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
