@@ -34,31 +34,34 @@ class PortfolioListFragment : BaseFragment<FragmentPortfolioListBinding>() {
             portfolio?.let { adapter.submitList(portfolio) }
         }
 
-        adapter.onClick = {
-            Toast.makeText(
-                requireActivity(),
-                "Portfolio Info - Work In Progress",
-                Toast.LENGTH_SHORT
-            ).show()
+        adapter.onClick = { portfolio ->
+            portfolio?.let {
+                findNavController().navigate(
+                    PortfolioListFragmentDirections
+                        .actionPortfolioListFragmentToPortfolioDetailsFragment(
+                            portfolio.id
+                        )
+                )
+            }
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.toolbar_options, menu)
+        inflater.inflate(R.menu.menu_lists_options, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.toolbar_options_create -> {
+            R.id.lists_options_create -> {
                 Toast.makeText(
                     requireActivity(),
-                    "Create Portfolio - Work In Progress",
+                    "Add Portfolio - Work In Progress",
                     Toast.LENGTH_SHORT
                 ).show()
                 true
             }
 
-            R.id.toolbar_options_edit -> {
+            R.id.lists_options_edit -> {
                 Toast.makeText(
                     requireActivity(),
                     "Edit Portfolio - Work In Progress",
@@ -67,7 +70,7 @@ class PortfolioListFragment : BaseFragment<FragmentPortfolioListBinding>() {
                 true
             }
 
-            R.id.toolbar_options_delete -> {
+            R.id.lists_options_delete -> {
                 Toast.makeText(
                     requireActivity(),
                     "Delete Portfolio - Work In Progress",
@@ -76,7 +79,7 @@ class PortfolioListFragment : BaseFragment<FragmentPortfolioListBinding>() {
                 true
             }
 
-            R.id.toolbar_options_settings -> {
+            R.id.lists_options_settings -> {
                 findNavController().navigate(
                     PortfolioListFragmentDirections.actionPortfolioListFragmentToSettingsFragment()
                 )

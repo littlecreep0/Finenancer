@@ -33,12 +33,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.home_fragment_settings, menu)
+        inflater.inflate(R.menu.menu_home_settings, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.home_toolbar_settings -> {
+            R.id.home_settings -> {
                 findNavController().navigate(
                     HomeFragmentDirections.actionHomeFragmentToSettingsFragment()
                 )
