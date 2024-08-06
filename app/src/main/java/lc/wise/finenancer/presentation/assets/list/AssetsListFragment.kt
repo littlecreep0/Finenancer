@@ -55,7 +55,7 @@ class AssetsListFragment : BaseFragment<FragmentAssetsListBinding>() {
             R.id.lists_options_create -> {
                 Toast.makeText(
                     requireActivity(),
-                    "Add Asset - Work In Progress",
+                    R.string.wip,
                     Toast.LENGTH_SHORT
                 ).show()
                 true
@@ -64,7 +64,7 @@ class AssetsListFragment : BaseFragment<FragmentAssetsListBinding>() {
             R.id.lists_options_edit -> {
                 Toast.makeText(
                     requireActivity(),
-                    "Edit Asset - Work In Progress",
+                    R.string.wip,
                     Toast.LENGTH_SHORT
                 ).show()
                 true
@@ -73,7 +73,7 @@ class AssetsListFragment : BaseFragment<FragmentAssetsListBinding>() {
             R.id.lists_options_delete -> {
                 Toast.makeText(
                     requireActivity(),
-                    "Delete Asset - Work In Progress",
+                    R.string.wip,
                     Toast.LENGTH_SHORT
                 ).show()
                 true

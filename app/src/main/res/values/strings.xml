@@ -10,4 +10,8 @@
     <string name="portfolio_history">Portfolio History</string>
     <string name="settings">App Settings</string>
     <string name="assets_in_portfolio">Assets in Portfolio:</string>
+    <string name="no_asset">Failed to load asset: no asset with this ID found</string>
+    <string name="no_portfolio">Failed to load portfolio: no portfolio with this ID found</string>
+    <string name="total_amount">Total Amount: %1$,.2f</string>
+    <string name="wip">WORK IN PROGRESS</string>
 </resources>

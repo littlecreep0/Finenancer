@@ -55,7 +55,7 @@ class PortfolioListFragment : BaseFragment<FragmentPortfolioListBinding>() {
             R.id.lists_options_create -> {
                 Toast.makeText(
                     requireActivity(),
-                    "Add Portfolio - Work In Progress",
+                    R.string.wip,
                     Toast.LENGTH_SHORT
                 ).show()
                 true
@@ -64,7 +64,7 @@ class PortfolioListFragment : BaseFragment<FragmentPortfolioListBinding>() {
             R.id.lists_options_edit -> {
                 Toast.makeText(
                     requireActivity(),
-                    "Edit Portfolio - Work In Progress",
+                    R.string.wip,
                     Toast.LENGTH_SHORT
                 ).show()
                 true
@@ -73,7 +73,7 @@ class PortfolioListFragment : BaseFragment<FragmentPortfolioListBinding>() {
             R.id.lists_options_delete -> {
                 Toast.makeText(
                     requireActivity(),
-                    "Delete Portfolio - Work In Progress",
+                    R.string.wip,
                     Toast.LENGTH_SHORT
                 ).show()
                 true

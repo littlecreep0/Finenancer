@@ -5,38 +5,26 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import lc.wise.finenancer.data.stub.repository.StubPortfolioItemRepository
-import lc.wise.finenancer.data.stub.repository.StubPortfolioRepository
+import lc.wise.finenancer.R
 import lc.wise.finenancer.domain.entity.Portfolio
-import lc.wise.finenancer.domain.entity.Stock
+import lc.wise.finenancer.domain.repository.PortfolioRepository
+import lc.wise.finenancer.presentation.utils.StringValue
 
 @HiltViewModel
 class PortfolioDetailsViewModel @Inject constructor(
-    private val stubPortfolioRepository: StubPortfolioRepository,
-    private val stubPortfolioItemRepository: StubPortfolioItemRepository
+    private val portfolioRepository: PortfolioRepository
 ) : ViewModel() {
     private val _portfolio = MutableLiveData<Portfolio>()
     val portfolio: LiveData<Portfolio> get() = _portfolio
 
-    private val _stocksList = MutableLiveData<List<Stock>>()
-    val stocksList: LiveData<List<Stock>> get() = _stocksList
-
-    private val _toast = MutableLiveData<String>()
-    val toast: LiveData<String> get() = _toast
-
-    init {
-        loadStocksList()
-    }
+    private val _toast by lazy { MutableLiveData<StringValue>() }
+    val toast: LiveData<StringValue> get() = _toast
 
     fun findPortfolioById(id: Int) {
         try {
-            _portfolio.value = stubPortfolioRepository.getPortfolioByID(id)
+            _portfolio.value = portfolioRepository.getPortfolioByID(id)
         } catch (e: IllegalArgumentException) {
-            _toast.value = "Failed to load portfolio: no portfolio with this ID found"
+            _toast.postValue(StringValue.StringResource(R.string.no_portfolio))
         }
-    }
-
-    private fun loadStocksList() {
-        _stocksList.value = stubPortfolioItemRepository.getAllStocks()
     }
 }

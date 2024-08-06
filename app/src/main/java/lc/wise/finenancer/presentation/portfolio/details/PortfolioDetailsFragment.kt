@@ -18,6 +18,8 @@ import lc.wise.finenancer.presentation.utils.BaseFragment
 @AndroidEntryPoint
 class PortfolioDetailsFragment : BaseFragment<FragmentPortfolioDetailsBinding>() {
     private val viewModel: PortfolioDetailsViewModel by viewModels()
+    val args: PortfolioDetailsFragmentArgs by navArgs()
+
     override fun inflateBinding() = FragmentPortfolioDetailsBinding.inflate(layoutInflater)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,23 +31,19 @@ class PortfolioDetailsFragment : BaseFragment<FragmentPortfolioDetailsBinding>()
     }
 
     private fun showDetails() {
-        val args: PortfolioDetailsFragmentArgs by navArgs()
         val portfolioId = args.portfolioId
         viewModel.findPortfolioById(portfolioId)
+
+        val adapter = PortfolioDetailsAdapter()
+        binding.portfolioStocksList.adapter = adapter
 
         viewModel.portfolio.observe(viewLifecycleOwner) { portfolio ->
             portfolio?.let {
                 with(binding) {
                     portfolioName.text = portfolio.name
                 }
+                adapter.submitList(portfolio.stockList)
             }
-        }
-
-        val adapter = PortfolioDetailsAdapter()
-        binding.portfolioStocksList.adapter = adapter
-
-        viewModel.stocksList.observe(viewLifecycleOwner) { stocks ->
-            stocks?.let { adapter.submitList(stocks) }
         }
 
         adapter.onClick = { stock ->
@@ -63,7 +61,7 @@ class PortfolioDetailsFragment : BaseFragment<FragmentPortfolioDetailsBinding>()
             toast?.let {
                 Toast.makeText(
                     requireActivity(),
-                    it,
+                    it.asString(requireContext()),
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -79,7 +77,7 @@ class PortfolioDetailsFragment : BaseFragment<FragmentPortfolioDetailsBinding>()
             R.id.details_options_edit -> {
                 Toast.makeText(
                     requireActivity(),
-                    "Edit Portfolio - Work In Progress",
+                    R.string.wip,
                     Toast.LENGTH_SHORT
                 ).show()
                 true
@@ -88,7 +86,7 @@ class PortfolioDetailsFragment : BaseFragment<FragmentPortfolioDetailsBinding>()
             R.id.details_options_delete -> {
                 Toast.makeText(
                     requireActivity(),
-                    "Delete Portfolio - Work In Progress",
+                    R.string.wip,
                     Toast.LENGTH_SHORT
                 ).show()
                 true
@@ -97,7 +95,7 @@ class PortfolioDetailsFragment : BaseFragment<FragmentPortfolioDetailsBinding>()
             R.id.details_options_history -> {
                 Toast.makeText(
                     requireActivity(),
-                    "Portfolio History - Work In Progress",
+                    R.string.wip,
                     Toast.LENGTH_SHORT
                 ).show()
                 true

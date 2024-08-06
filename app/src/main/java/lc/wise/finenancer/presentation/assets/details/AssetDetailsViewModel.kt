@@ -5,24 +5,26 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import lc.wise.finenancer.data.stub.repository.StubAssetRepository
+import lc.wise.finenancer.R
 import lc.wise.finenancer.domain.entity.Asset
+import lc.wise.finenancer.domain.repository.AssetRepository
+import lc.wise.finenancer.presentation.utils.StringValue
 
 @HiltViewModel
 class AssetDetailsViewModel @Inject constructor(
-    private val stubAssetRepository: StubAssetRepository
+    private val assetRepository: AssetRepository
 ) : ViewModel() {
     private val _asset = MutableLiveData<Asset>()
     val asset: LiveData<Asset> get() = _asset
 
-    private val _toast = MutableLiveData<String>()
-    val toast: LiveData<String> get() = _toast
+    private val _toast by lazy { MutableLiveData<StringValue>() }
+    val toast: LiveData<StringValue> get() = _toast
 
     fun findAssetById(id: Int) {
         try {
-            _asset.value = stubAssetRepository.getAssetByID(id)
+            _asset.value = assetRepository.getAssetByID(id)
         } catch (e: IllegalArgumentException) {
-            _toast.value = "Failed to load asset: no asset with this ID found"
+            _toast.postValue(StringValue.StringResource(R.string.no_asset))
         }
     }
 }
