@@ -1,29 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <item
-        android:id="@+id/toolbar_options_create"
+        android:id="@+id/details_options_edit"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="@string/create"
+        android:title="@string/details_edit"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/toolbar_options_edit"
+        android:id="@+id/details_options_delete"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="@string/edit"
+        android:title="@string/details_delete"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/toolbar_options_delete"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="@string/delete"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/toolbar_options_settings"
+        android:id="@+id/details_options_settings"
         android:icon="@drawable/ic_launcher_foreground"
         android:title="@string/settings"
         app:showAsAction="never" />
-
 </menu>
