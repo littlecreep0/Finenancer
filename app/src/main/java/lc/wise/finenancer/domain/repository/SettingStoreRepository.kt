@@ -1,6 +1,6 @@
 package lc.wise.finenancer.domain.repository
 
 interface SettingStoreRepository {
-    fun getDefaultCurrency(): String
-    fun setDefaultCurrency(newCurrency: String)
+    suspend fun getDefaultCurrency(): String
+    suspend fun setDefaultCurrency(newCurrency: String)
 }

@@ -3,7 +3,9 @@ package lc.wise.finenancer.presentation.settings
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import lc.wise.finenancer.domain.entity.Currency
 import lc.wise.finenancer.domain.repository.CurrencyRepository
 import lc.wise.finenancer.domain.repository.SettingStoreRepository
@@ -21,21 +23,22 @@ class SettingsViewModel @Inject constructor(
     val currenciesList: LiveData<List<Currency>> get() = _currenciesList
 
     init {
-        loadSettings()
-        loadCurrencies()
+        viewModelScope.launch {
+            loadSettings()
+            loadCurrencies()
+        }
     }
 
-    private fun loadSettings() {
+    private suspend fun loadSettings() {
         _settings.value = settingStore.getDefaultCurrency()
     }
 
-    private fun loadCurrencies() {
+    private suspend fun loadCurrencies() {
         _currenciesList.value = currencyRepository.getAllCurrencies()
     }
 
-    fun setDefaultCurrency(currency: String) {
+    suspend fun setDefaultCurrency(currency: String) {
         settingStore.setDefaultCurrency(currency)
         _settings.value = currency
     }
 }
-

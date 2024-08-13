@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import lc.wise.finenancer.R
 import lc.wise.finenancer.presentation.settings.SettingsViewModel
 import lc.wise.finenancer.presentation.settings.bottomSheet.rv.CurrencyBottomSheetAdapter
@@ -30,9 +32,11 @@ class CurrencyBottomSheet : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         currencyAdapter = CurrencyBottomSheetAdapter { selectedCurrency ->
-            settingsViewModel.setDefaultCurrency(selectedCurrency.name)
-            onCurrencySelectedListener?.onCurrencySelected(selectedCurrency.name)
-            dismiss()
+            lifecycleScope.launch {
+                settingsViewModel.setDefaultCurrency(selectedCurrency.name)
+                onCurrencySelectedListener?.onCurrencySelected(selectedCurrency.name)
+                dismiss()
+            }
         }
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -55,4 +59,3 @@ class CurrencyBottomSheet : BottomSheetDialogFragment() {
         const val TAG = "TAG_SELECT_CURRENCY"
     }
 }
-
