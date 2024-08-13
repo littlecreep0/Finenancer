@@ -16,6 +16,7 @@ import lc.wise.finenancer.presentation.utils.BaseFragment
 
 @AndroidEntryPoint
 class AssetDetailsFragment : BaseFragment<FragmentAssetDetailsBinding>() {
+    private val abstractValue: Double = 12_345_678.90
     private val viewModel: AssetDetailsViewModel by viewModels()
     val args: AssetDetailsFragmentArgs by navArgs()
 
@@ -40,7 +41,7 @@ class AssetDetailsFragment : BaseFragment<FragmentAssetDetailsBinding>() {
                     assetName.text = asset.name
                     assetTotalAmount.text = getString(
                         R.string.total_amount,
-                        asset.totalAmount
+                        abstractValue
                     )
                 }
             }

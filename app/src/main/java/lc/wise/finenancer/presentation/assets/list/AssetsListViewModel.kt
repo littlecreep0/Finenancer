@@ -6,11 +6,11 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import lc.wise.finenancer.domain.entity.Asset
-import lc.wise.finenancer.domain.repository.AssetRepository
+import lc.wise.finenancer.domain.interactors.AssetsInteractor
 
 @HiltViewModel
 class AssetsListViewModel @Inject constructor(
-    private val assetRepository: AssetRepository
+    private val assetListInteractor: AssetsInteractor
 ) : ViewModel() {
     private val _assetsList = MutableLiveData<List<Asset>>()
     val assetsList: LiveData<List<Asset>> get() = _assetsList
@@ -20,6 +20,6 @@ class AssetsListViewModel @Inject constructor(
     }
 
     private fun loadAssetsList() {
-        _assetsList.value = assetRepository.getAllAssets()
+        _assetsList.value = assetListInteractor.getAssetList()
     }
 }

@@ -3,16 +3,16 @@ package lc.wise.finenancer.presentation.portfolio.details.rv
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import lc.wise.finenancer.databinding.ItemStockBinding
-import lc.wise.finenancer.domain.entity.Stock
+import lc.wise.finenancer.databinding.ItemAssetBinding
+import lc.wise.finenancer.domain.entity.Asset
 
 class PortfolioDetailsAdapter :
-    ListAdapter<Stock, PortfolioDetailsViewHolder>(PortfolioDetailsDiffUtil()) {
-    var onClick: (Stock) -> Unit = {}
+    ListAdapter<Asset, PortfolioDetailsViewHolder>(PortfolioDetailsDiffUtil()) {
+    var onClick: (Asset) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PortfolioDetailsViewHolder {
         return PortfolioDetailsViewHolder(
-            ItemStockBinding.inflate(
+            ItemAssetBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )
