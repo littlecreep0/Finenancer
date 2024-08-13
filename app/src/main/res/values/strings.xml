@@ -6,4 +6,5 @@
     <string name="edit">Edit Existing</string>
     <string name="delete">Delete Existing</string>
     <string name="settings">App Settings</string>
+    <string name="default_currency">Default currency</string>
 </resources>

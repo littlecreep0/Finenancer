@@ -1,0 +1,41 @@
+package lc.wise.finenancer.presentation.settings
+
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import lc.wise.finenancer.domain.entity.Currency
+import lc.wise.finenancer.domain.repository.CurrencyRepository
+import lc.wise.finenancer.domain.repository.SettingStoreRepository
+import javax.inject.Inject
+
+@HiltViewModel
+class SettingsViewModel @Inject constructor(
+    private val settingStore: SettingStoreRepository,
+    private val currencyRepository: CurrencyRepository
+) : ViewModel() {
+    private val _settings: MutableLiveData<String> = MutableLiveData()
+    val settings: LiveData<String> get() = _settings
+
+    private val _currenciesList: MutableLiveData<List<Currency>> = MutableLiveData()
+    val currenciesList: LiveData<List<Currency>> get() = _currenciesList
+
+    init {
+        loadSettings()
+        loadCurrencies()
+    }
+
+    private fun loadSettings() {
+        _settings.value = settingStore.getDefaultCurrency()
+    }
+
+    private fun loadCurrencies() {
+        _currenciesList.value = currencyRepository.getAllCurrencies()
+    }
+
+    fun setDefaultCurrency(currency: String) {
+        settingStore.setDefaultCurrency(currency)
+        _settings.value = currency
+    }
+}
+
