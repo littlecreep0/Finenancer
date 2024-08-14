@@ -1,15 +1,15 @@
 package lc.wise.finenancer.presentation.settings.bottomSheet.rv
 
-import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import lc.wise.finenancer.R
+import lc.wise.finenancer.databinding.ItemCurrencyBinding
 import lc.wise.finenancer.domain.entity.Currency
 
 class CurrencyBottomSheetViewHolder(
-    itemView: View,
+    binding: ItemCurrencyBinding,
     private val onCurrencySelected: (Currency) -> Unit
-) : RecyclerView.ViewHolder(itemView) {
+) : RecyclerView.ViewHolder(binding.root) {
     private val currencyName: TextView = itemView.findViewById(R.id.currencyName)
 
     fun bind(currency: Currency) {

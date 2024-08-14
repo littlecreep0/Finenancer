@@ -3,9 +3,7 @@ package lc.wise.finenancer.presentation.settings
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import lc.wise.finenancer.databinding.FragmentSettingsBinding
 import lc.wise.finenancer.presentation.settings.bottomSheet.CurrencyBottomSheet
 import lc.wise.finenancer.presentation.utils.BaseFragment
@@ -25,18 +23,15 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
         binding.setDefaultCurrencyButton.setOnClickListener {
             showCurrencyBottomSheet()
         }
+
+        parentFragmentManager.setFragmentResultListener("requestKey", this) { key, bundle ->
+            val selectedCurrency = bundle.getString("selectedCurrency")
+            viewModel.setDefaultCurrency(selectedCurrency ?: "")
+        }
     }
 
     private fun showCurrencyBottomSheet() {
         val bottomSheet = CurrencyBottomSheet()
-        bottomSheet.setOnCurrencySelectedListener(object :
-            CurrencyBottomSheet.OnCurrencySelectedListener {
-            override fun onCurrencySelected(currency: String) {
-                lifecycleScope.launch {
-                    viewModel.setDefaultCurrency(currency)
-                }
-            }
-        })
         bottomSheet.show(parentFragmentManager, CurrencyBottomSheet.TAG)
     }
 }
