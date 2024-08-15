@@ -2,6 +2,10 @@ package lc.wise.finenancer.domain.entity
 
 import java.time.LocalDate
 
+data class Country(
+    val country: String
+)
+
 open class Asset(
     open val id: Int,
     open val name: String,
@@ -20,7 +24,7 @@ data class Stock(
     override val name: String,
     override val currency: Currency,
     val ticker: String,
-    val country: String,
+    val country: Country,
     val dividends: Double
 ) : Asset(id, name, currency)
 
@@ -29,7 +33,7 @@ data class Bond(
     override val name: String,
     override val currency: Currency,
     val ticker: String,
-    val country: String,
+    val country: Country,
     val fixedPayment: Double,
     val maturityDate: LocalDate
 ) : Asset(id, name, currency)

@@ -4,6 +4,7 @@ import java.time.LocalDate
 import lc.wise.finenancer.domain.entity.Asset
 import lc.wise.finenancer.domain.entity.Bond
 import lc.wise.finenancer.domain.entity.Cash
+import lc.wise.finenancer.domain.entity.Country
 import lc.wise.finenancer.domain.entity.Currency
 import lc.wise.finenancer.domain.entity.Portfolio
 import lc.wise.finenancer.domain.entity.Stock
@@ -11,14 +12,14 @@ import lc.wise.finenancer.domain.entity.Stock
 object StubData {
 
     val assetList: List<Asset> = listOf(
-        Stock(1, "GazProm", Currency.RUB, "GZPR", "Russia", 23_673_512_900.0),
-        Stock(2, "Sber", Currency.RUB, "SBR", "Russia", 21_586_948_000.0),
-        Stock(3, "Google", Currency.USD, "GOOGL", "USA", 515_922_000.0),
-        Stock(4, "Apple", Currency.USD, "APPL", "USA", 16_000_000_000.0),
-        Bond(5, "GazProm", Currency.RUB, "GZPR", "Russia", 512_900.0, LocalDate.now()),
-        Bond(6, "Sber", Currency.RUB, "SBR", "Russia", 948_000.0, LocalDate.now()),
-        Bond(7, "Google", Currency.USD, "GOOGL", "USA", 922_000.0, LocalDate.now()),
-        Bond(8, "Apple", Currency.USD, "APPL", "USA", 16_000_000.0, LocalDate.now()),
+        Stock(1, "GazProm", Currency.RUB, "GZPR", Country("Russia"), 23_673_512_900.0),
+        Stock(2, "Sber", Currency.RUB, "SBR", Country("Russia"), 21_586_948_000.0),
+        Stock(3, "Google", Currency.USD, "GOOGL", Country("USA"), 515_922_000.0),
+        Stock(4, "Apple", Currency.USD, "APPL", Country("USA"), 16_000_000_000.0),
+        Bond(5, "GazProm", Currency.RUB, "GZPR", Country("Russia"), 512_900.0, LocalDate.now()),
+        Bond(6, "Sber", Currency.RUB, "SBR", Country("Russia"), 948_000.0, LocalDate.now()),
+        Bond(7, "Google", Currency.USD, "GOOGL", Country("USA"), 922_000.0, LocalDate.now()),
+        Bond(8, "Apple", Currency.USD, "APPL", Country("USA"), 16_000_000.0, LocalDate.now()),
         Cash(9, "Dollars USA", Currency.USD, 2_500.00),
         Cash(10, "Euro", Currency.EUR, 12_500.00),
         Cash(11, "Belarusian Roubles", Currency.BYN, 12_500.00),
@@ -27,14 +28,14 @@ object StubData {
     )
 
     val portfolioAssetList: List<Asset> = listOf(
-        Stock(1, "GazProm", Currency.RUB, "GZPR", "Russia", 23_673_512_900.0),
-        Stock(2, "Sber", Currency.RUB, "SBR", "Russia", 21_586_948_000.0),
-        Stock(3, "Google", Currency.USD, "GOOGL", "USA", 515_922_000.0),
-        Stock(4, "Apple", Currency.USD, "APPL", "USA", 16_000_000_000.0),
-        Bond(5, "GazProm", Currency.RUB, "GZPR", "Russia", 512_900.0, LocalDate.now()),
-        Bond(6, "Sber", Currency.RUB, "SBR", "Russia", 948_000.0, LocalDate.now()),
-        Bond(7, "Google", Currency.USD, "GOOGL", "USA", 922_000.0, LocalDate.now()),
-        Bond(8, "Apple", Currency.USD, "APPL", "USA", 16_000_000.0, LocalDate.now()),
+        Stock(1, "GazProm", Currency.RUB, "GZPR", Country("Russia"), 23_673_512_900.0),
+        Stock(2, "Sber", Currency.RUB, "SBR", Country("Russia"), 21_586_948_000.0),
+        Stock(3, "Google", Currency.USD, "GOOGL", Country("USA"), 515_922_000.0),
+        Stock(4, "Apple", Currency.USD, "APPL", Country("USA"), 16_000_000_000.0),
+        Bond(5, "GazProm", Currency.RUB, "GZPR", Country("Russia"), 512_900.0, LocalDate.now()),
+        Bond(6, "Sber", Currency.RUB, "SBR", Country("Russia"), 948_000.0, LocalDate.now()),
+        Bond(7, "Google", Currency.USD, "GOOGL", Country("USA"), 922_000.0, LocalDate.now()),
+        Bond(8, "Apple", Currency.USD, "APPL", Country("USA"), 16_000_000.0, LocalDate.now()),
         Cash(9, "Dollars USA", Currency.USD, 2_500.00),
         Cash(10, "Euro", Currency.EUR, 12_500.00),
         Cash(11, "Belarusian Roubles", Currency.BYN, 12_500.00),
