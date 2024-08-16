@@ -1,15 +1,11 @@
 package lc.wise.finenancer.domain.entity
 
 interface ICurrency {
-    val currencyName: String
+    val id: Int
+    val name: String
 }
 
-enum class Currency(
-    override val currencyName: String
-) : ICurrency {
-    USD("USD"),
-    EUR("EUR"),
-    BYN("BYN"),
-    RUB("RUB"),
-    CNY("CNY"),
-}
+data class Currency(
+    override val id: Int,
+    override val name: String
+) : ICurrency

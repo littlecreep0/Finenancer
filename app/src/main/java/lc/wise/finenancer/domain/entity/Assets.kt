@@ -3,7 +3,8 @@ package lc.wise.finenancer.domain.entity
 import java.time.LocalDate
 
 data class Country(
-    val country: String
+    val id: Int,
+    val name: String
 )
 
 open class Asset(

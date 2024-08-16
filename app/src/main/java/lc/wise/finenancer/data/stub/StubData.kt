@@ -11,36 +11,44 @@ import lc.wise.finenancer.domain.entity.Stock
 
 object StubData {
 
+    val currencyList: List<Currency> = listOf(
+        Currency(1, "USD"),
+        Currency(2, "EUR"),
+        Currency(3, "BYN"),
+        Currency(4, "RUB"),
+        Currency(5, "CNY")
+    )
+
     val assetList: List<Asset> = listOf(
-        Stock(1, "GazProm", Currency.RUB, "GZPR", Country("Russia"), 23_673_512_900.0),
-        Stock(2, "Sber", Currency.RUB, "SBR", Country("Russia"), 21_586_948_000.0),
-        Stock(3, "Google", Currency.USD, "GOOGL", Country("USA"), 515_922_000.0),
-        Stock(4, "Apple", Currency.USD, "APPL", Country("USA"), 16_000_000_000.0),
-        Bond(5, "GazProm", Currency.RUB, "GZPR", Country("Russia"), 512_900.0, LocalDate.now()),
-        Bond(6, "Sber", Currency.RUB, "SBR", Country("Russia"), 948_000.0, LocalDate.now()),
-        Bond(7, "Google", Currency.USD, "GOOGL", Country("USA"), 922_000.0, LocalDate.now()),
-        Bond(8, "Apple", Currency.USD, "APPL", Country("USA"), 16_000_000.0, LocalDate.now()),
-        Cash(9, "Dollars USA", Currency.USD, 2_500.00),
-        Cash(10, "Euro", Currency.EUR, 12_500.00),
-        Cash(11, "Belarusian Roubles", Currency.BYN, 12_500.00),
-        Cash(12, "Russian Roubles", Currency.RUB, 12_500.00),
-        Cash(13, "Chinese Yuan", Currency.CNY, 12_500.00)
+        Stock(1, "GazProm", currencyList[3], "GZPR", Country(4, "Russia"), 23_673_512_900.0),
+        Stock(2, "Sber", currencyList[3], "SBR", Country(4, "Russia"), 21_586_948_000.0),
+        Stock(3, "Google", currencyList[0], "GOOGL", Country(1, "USA"), 515_922_000.0),
+        Stock(4, "Apple", currencyList[0], "APPL", Country(1, "USA"), 16_000_000_000.0),
+        Bond(5, "GazProm", currencyList[3], "GZPR", Country(4, "Russia"), 900.0, LocalDate.now()),
+        Bond(6, "Sber", currencyList[3], "SBR", Country(4, "Russia"), 948_000.0, LocalDate.now()),
+        Bond(7, "Google", currencyList[0], "GOOGL", Country(1, "USA"), 922_000.0, LocalDate.now()),
+        Bond(8, "Apple", currencyList[0], "APPL", Country(1, "USA"), 16_000_000.0, LocalDate.now()),
+        Cash(9, "Dollars USA", currencyList[0], 2_500.00),
+        Cash(10, "Euro", currencyList[1], 12_500.00),
+        Cash(11, "Belarusian Roubles", currencyList[2], 12_500.00),
+        Cash(12, "Russian Roubles", currencyList[3], 12_500.00),
+        Cash(13, "Chinese Yuan", currencyList[4], 12_500.00)
     )
 
     val portfolioAssetList: List<Asset> = listOf(
-        Stock(1, "GazProm", Currency.RUB, "GZPR", Country("Russia"), 23_673_512_900.0),
-        Stock(2, "Sber", Currency.RUB, "SBR", Country("Russia"), 21_586_948_000.0),
-        Stock(3, "Google", Currency.USD, "GOOGL", Country("USA"), 515_922_000.0),
-        Stock(4, "Apple", Currency.USD, "APPL", Country("USA"), 16_000_000_000.0),
-        Bond(5, "GazProm", Currency.RUB, "GZPR", Country("Russia"), 512_900.0, LocalDate.now()),
-        Bond(6, "Sber", Currency.RUB, "SBR", Country("Russia"), 948_000.0, LocalDate.now()),
-        Bond(7, "Google", Currency.USD, "GOOGL", Country("USA"), 922_000.0, LocalDate.now()),
-        Bond(8, "Apple", Currency.USD, "APPL", Country("USA"), 16_000_000.0, LocalDate.now()),
-        Cash(9, "Dollars USA", Currency.USD, 2_500.00),
-        Cash(10, "Euro", Currency.EUR, 12_500.00),
-        Cash(11, "Belarusian Roubles", Currency.BYN, 12_500.00),
-        Cash(12, "Russian Roubles", Currency.RUB, 12_500.00),
-        Cash(13, "Chinese Yuan", Currency.CNY, 12_500.00)
+        Stock(1, "GazProm", currencyList[3], "GZPR", Country(4, "Russia"), 23_673_512_900.0),
+        Stock(2, "Sber", currencyList[3], "SBR", Country(4, "Russia"), 21_586_948_000.0),
+        Stock(3, "Google", currencyList[0], "GOOGL", Country(1, "USA"), 515_922_000.0),
+        Stock(4, "Apple", currencyList[0], "APPL", Country(1, "USA"), 16_000_000_000.0),
+        Bond(5, "GazProm", currencyList[3], "GZPR", Country(4, "Russia"), 900.0, LocalDate.now()),
+        Bond(6, "Sber", currencyList[3], "SBR", Country(4, "Russia"), 948_000.0, LocalDate.now()),
+        Bond(7, "Google", currencyList[0], "GOOGL", Country(1, "USA"), 922_000.0, LocalDate.now()),
+        Bond(8, "Apple", currencyList[0], "APPL", Country(1, "USA"), 16_000_000.0, LocalDate.now()),
+        Cash(9, "Dollars USA", currencyList[0], 2_500.00),
+        Cash(10, "Euro", currencyList[1], 12_500.00),
+        Cash(11, "Belarusian Roubles", currencyList[2], 12_500.00),
+        Cash(12, "Russian Roubles", currencyList[3], 12_500.00),
+        Cash(13, "Chinese Yuan", currencyList[4], 12_500.00)
     )
 
     val portfolioList: List<Portfolio> = listOf(
