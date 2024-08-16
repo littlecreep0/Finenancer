@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/home_toolbar_settings"
+        android:id="@+id/home_settings"
         android:icon="@drawable/ic_launcher_foreground"
         android:title="@string/settings"
         app:showAsAction="always" />
