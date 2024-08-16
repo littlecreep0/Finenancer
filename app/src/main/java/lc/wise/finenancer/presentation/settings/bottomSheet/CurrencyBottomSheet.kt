@@ -38,10 +38,10 @@ class CurrencyBottomSheet : BottomSheetDialogFragment() {
             lifecycleScope.launch {
                 settingsViewModel.setDefaultCurrency(selectedCurrency.name)
                 setFragmentResult(
-                    "requestKey",
+                    REQUEST_KEY,
                     Bundle().apply {
                         putString(
-                            "selectedCurrency", selectedCurrency.name
+                            SELECTED_CURRENCY, selectedCurrency.name
                         )
                     }
                 )
@@ -63,5 +63,7 @@ class CurrencyBottomSheet : BottomSheetDialogFragment() {
 
     companion object {
         const val TAG = "TAG_SELECT_CURRENCY"
+        const val REQUEST_KEY = "requestKey"
+        const val SELECTED_CURRENCY = "selectedCurrency"
     }
 }

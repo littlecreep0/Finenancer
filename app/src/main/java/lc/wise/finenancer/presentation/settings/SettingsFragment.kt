@@ -6,6 +6,8 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import lc.wise.finenancer.databinding.FragmentSettingsBinding
 import lc.wise.finenancer.presentation.settings.bottomSheet.CurrencyBottomSheet
+import lc.wise.finenancer.presentation.settings.bottomSheet.CurrencyBottomSheet.Companion.REQUEST_KEY
+import lc.wise.finenancer.presentation.settings.bottomSheet.CurrencyBottomSheet.Companion.SELECTED_CURRENCY
 import lc.wise.finenancer.presentation.utils.BaseFragment
 
 @AndroidEntryPoint
@@ -24,8 +26,8 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
             showCurrencyBottomSheet()
         }
 
-        parentFragmentManager.setFragmentResultListener("requestKey", this) { key, bundle ->
-            val selectedCurrency = bundle.getString("selectedCurrency")
+        parentFragmentManager.setFragmentResultListener(REQUEST_KEY, this) { key, bundle ->
+            val selectedCurrency = bundle.getString(SELECTED_CURRENCY)
             viewModel.setDefaultCurrency(selectedCurrency ?: "")
         }
     }
