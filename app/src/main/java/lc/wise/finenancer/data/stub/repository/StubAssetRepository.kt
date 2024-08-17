@@ -6,9 +6,6 @@ import lc.wise.finenancer.domain.entity.Asset
 import lc.wise.finenancer.domain.repository.AssetRepository
 
 class StubAssetRepository @Inject constructor() : AssetRepository {
-    override fun createAsset(): Asset? {
-        TODO()
-    }
 
     override fun getAssetByID(assetID: Int): Asset? =
         StubData.assetList.find { it.id == assetID }
@@ -16,7 +13,7 @@ class StubAssetRepository @Inject constructor() : AssetRepository {
     override fun getAllAssets(): List<Asset> =
         StubData.assetList
 
-    override fun editAsset(assetID: Int): Asset? {
+    override fun saveAsset(asset: Asset): Asset? {
         TODO()
     }
 

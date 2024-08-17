@@ -6,9 +6,6 @@ import lc.wise.finenancer.domain.entity.Portfolio
 import lc.wise.finenancer.domain.repository.PortfolioRepository
 
 class StubPortfolioRepository @Inject constructor() : PortfolioRepository {
-    override fun createPortfolio(): Portfolio? {
-        TODO()
-    }
 
     override fun getPortfolioByID(portfolioID: Int): Portfolio? =
         StubData.portfolioList.find { it.id == portfolioID }
@@ -16,7 +13,7 @@ class StubPortfolioRepository @Inject constructor() : PortfolioRepository {
     override fun getAllPortfolios(): List<Portfolio> =
         StubData.portfolioList
 
-    override fun editPortfolio(portfolioID: Int): Portfolio? {
+    override fun savePortfolio(portfolio: Portfolio): Portfolio? {
         TODO()
     }
 

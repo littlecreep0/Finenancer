@@ -20,11 +20,9 @@ object StubData {
     )
 
     val assetList: List<Asset> = listOf(
-        Stock(1, "GazProm", currencyList[3], "GZPR", Country(4, "Russia"), 23_673_512_900.0),
         Stock(2, "Sber", currencyList[3], "SBR", Country(4, "Russia"), 21_586_948_000.0),
         Stock(3, "Google", currencyList[0], "GOOGL", Country(1, "USA"), 515_922_000.0),
         Stock(4, "Apple", currencyList[0], "APPL", Country(1, "USA"), 16_000_000_000.0),
-        Bond(5, "GazProm", currencyList[3], "GZPR", Country(4, "Russia"), 900.0, LocalDate.now()),
         Bond(6, "Sber", currencyList[3], "SBR", Country(4, "Russia"), 948_000.0, LocalDate.now()),
         Bond(7, "Google", currencyList[0], "GOOGL", Country(1, "USA"), 922_000.0, LocalDate.now()),
         Bond(8, "Apple", currencyList[0], "APPL", Country(1, "USA"), 16_000_000.0, LocalDate.now()),
@@ -36,11 +34,9 @@ object StubData {
     )
 
     val portfolioAssetList: List<Asset> = listOf(
-        Stock(1, "GazProm", currencyList[3], "GZPR", Country(4, "Russia"), 23_673_512_900.0),
         Stock(2, "Sber", currencyList[3], "SBR", Country(4, "Russia"), 21_586_948_000.0),
         Stock(3, "Google", currencyList[0], "GOOGL", Country(1, "USA"), 515_922_000.0),
         Stock(4, "Apple", currencyList[0], "APPL", Country(1, "USA"), 16_000_000_000.0),
-        Bond(5, "GazProm", currencyList[3], "GZPR", Country(4, "Russia"), 900.0, LocalDate.now()),
         Bond(6, "Sber", currencyList[3], "SBR", Country(4, "Russia"), 948_000.0, LocalDate.now()),
         Bond(7, "Google", currencyList[0], "GOOGL", Country(1, "USA"), 922_000.0, LocalDate.now()),
         Bond(8, "Apple", currencyList[0], "APPL", Country(1, "USA"), 16_000_000.0, LocalDate.now()),

@@ -1,5 +1,6 @@
 package lc.wise.finenancer.domain.interactors
 
+import lc.wise.finenancer.domain.entity.Portfolio
 import javax.inject.Inject
 import javax.inject.Singleton
 import lc.wise.finenancer.domain.repository.PortfolioRepository
@@ -8,9 +9,8 @@ import lc.wise.finenancer.domain.repository.PortfolioRepository
 class PortfolioInteractor @Inject constructor(
     private val portfolioRepository: PortfolioRepository
 ) {
-    fun createPortfolio() = portfolioRepository.createPortfolio()
     fun getPortfolioByID(portfolioID: Int) = portfolioRepository.getPortfolioByID(portfolioID)
     fun getPortfolioList() = portfolioRepository.getAllPortfolios()
-    fun editPortfolio(portfolioID: Int) = portfolioRepository.editPortfolio(portfolioID)
+    fun savePortfolio(portfolio: Portfolio) = portfolioRepository.savePortfolio(portfolio)
     fun deletePortfolio(portfolioID: Int) = portfolioRepository.deletePortfolio(portfolioID)
 }
