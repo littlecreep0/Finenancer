@@ -3,22 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="60dp">
 
     <ImageView
         android:id="@+id/portfolio_icon"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.3"
+        android:layout_weight="0.25"
         tools:src="@drawable/ic_launcher_foreground" />
 
     <TextView
         android:id="@+id/portfolio_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.7"
+        android:layout_weight="0.75"
         android:textAlignment="viewStart"
-        android:textSize="48sp"
+        android:layout_gravity="center_vertical"
+        android:textSize="30sp"
         tools:text="Portfolio" />
 
 </LinearLayout>

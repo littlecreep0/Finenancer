@@ -11,16 +11,15 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import lc.wise.finenancer.R
-import lc.wise.finenancer.databinding.FragmentAssetDetailsBinding
+import lc.wise.finenancer.databinding.FragmentStockDetailsBinding
 import lc.wise.finenancer.presentation.utils.BaseFragment
 
 @AndroidEntryPoint
-class AssetDetailsFragment : BaseFragment<FragmentAssetDetailsBinding>() {
-    private val abstractValue: Double = 12_345_678.90
+class AssetDetailsStockFragment : BaseFragment<FragmentStockDetailsBinding>() {
     private val viewModel: AssetDetailsViewModel by viewModels()
-    val args: AssetDetailsFragmentArgs by navArgs()
+    val args: AssetDetailsStockFragmentArgs by navArgs()
 
-    override fun inflateBinding() = FragmentAssetDetailsBinding.inflate(layoutInflater)
+    override fun inflateBinding() = FragmentStockDetailsBinding.inflate(layoutInflater)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,13 +34,18 @@ class AssetDetailsFragment : BaseFragment<FragmentAssetDetailsBinding>() {
 
         viewModel.findAssetById(assetId)
 
-        viewModel.asset.observe(viewLifecycleOwner) { asset ->
-            asset?.let {
+        viewModel.stock.observe(viewLifecycleOwner) { stock ->
+            stock?.let {
                 with(binding) {
-                    assetName.text = asset.name
-                    assetTotalAmount.text = getString(
-                        R.string.total_amount,
-                        abstractValue
+                    stockName.text = stock.name
+                    stockTicker.text = stock.ticker
+                    stockCountry.text = getString(
+                        R.string.country,
+                        stock.country.name
+                    )
+                    stockDividends.text = getString(
+                        R.string.dividends,
+                        stock.dividends
                     )
                 }
             }
@@ -50,9 +54,7 @@ class AssetDetailsFragment : BaseFragment<FragmentAssetDetailsBinding>() {
         viewModel.toast.observe(viewLifecycleOwner) { toast ->
             toast?.let {
                 Toast.makeText(
-                    requireActivity(),
-                    it.asString(requireContext()),
-                    Toast.LENGTH_SHORT
+                    requireActivity(), it.asString(requireContext()), Toast.LENGTH_SHORT
                 ).show()
             }
         }
@@ -80,7 +82,8 @@ class AssetDetailsFragment : BaseFragment<FragmentAssetDetailsBinding>() {
 
             R.id.details_options_settings -> {
                 findNavController().navigate(
-                    AssetDetailsFragmentDirections.actionAssetDetailsFragmentToSettingsFragment()
+                    AssetDetailsStockFragmentDirections
+                        .actionAssetDetailsStockFragmentToSettingsFragment()
                 )
                 true
             }

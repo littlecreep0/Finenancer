@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".presentation.portfolio.details.PortfolioDetailsFragment">
+    tools:context=".presentation.assets.details.AssetDetailsCashFragment">
 
     <ImageView
-        android:id="@+id/portfolio_icon"
+        android:id="@+id/cash_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -17,28 +16,20 @@
         android:src="@drawable/ic_launcher_foreground" />
 
     <TextView
-        android:id="@+id/portfolio_name"
+        android:id="@+id/cash_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="40sp"
-        tools:text="Portfolio Name" />
+        tools:text="Cash" />
 
     <TextView
-        android:id="@+id/portfolio_assets"
+        android:id="@+id/cash_worth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:paddingTop="64dp"
         android:textSize="24sp"
-        android:text="@string/assets_in_portfolio" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/portfolio_assets_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="16dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        tools:text="Worth: 999$" />
 
 </LinearLayout>

@@ -11,6 +11,9 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import lc.wise.finenancer.R
 import lc.wise.finenancer.databinding.FragmentAssetsListBinding
+import lc.wise.finenancer.domain.entity.Bond
+import lc.wise.finenancer.domain.entity.Cash
+import lc.wise.finenancer.domain.entity.Stock
 import lc.wise.finenancer.presentation.assets.list.rv.AssetsListAdapter
 import lc.wise.finenancer.presentation.utils.BaseFragment
 
@@ -37,11 +40,30 @@ class AssetsListFragment : BaseFragment<FragmentAssetsListBinding>() {
 
         adapter.onClick = { asset ->
             asset?.let {
-                findNavController().navigate(
-                    AssetsListFragmentDirections.actionAssetsListFragmentToAssetDetailsFragment(
-                        asset.id
+                when (asset) {
+                    is Cash -> findNavController().navigate(
+                        AssetsListFragmentDirections
+                            .actionAssetsListFragmentToAssetDetailsCashFragment(
+                                asset.id
+                            )
                     )
-                )
+
+                    is Stock -> findNavController().navigate(
+                        AssetsListFragmentDirections
+                            .actionAssetsListFragmentToAssetDetailsStockFragment(
+                                asset.id
+                            )
+                    )
+
+                    is Bond -> findNavController().navigate(
+                        AssetsListFragmentDirections
+                            .actionAssetsListFragmentToAssetDetailsBondFragment(
+                                asset.id
+                            )
+                    )
+
+                    else -> throw IllegalArgumentException()
+                }
             }
         }
     }

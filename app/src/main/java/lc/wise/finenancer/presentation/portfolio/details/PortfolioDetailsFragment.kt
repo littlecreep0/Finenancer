@@ -12,6 +12,9 @@ import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import lc.wise.finenancer.R
 import lc.wise.finenancer.databinding.FragmentPortfolioDetailsBinding
+import lc.wise.finenancer.domain.entity.Bond
+import lc.wise.finenancer.domain.entity.Cash
+import lc.wise.finenancer.domain.entity.Stock
 import lc.wise.finenancer.presentation.portfolio.details.rv.PortfolioDetailsAdapter
 import lc.wise.finenancer.presentation.utils.BaseFragment
 
@@ -35,7 +38,7 @@ class PortfolioDetailsFragment : BaseFragment<FragmentPortfolioDetailsBinding>()
         viewModel.findPortfolioById(portfolioId)
 
         val adapter = PortfolioDetailsAdapter()
-        binding.portfolioStocksList.adapter = adapter
+        binding.portfolioAssetsList.adapter = adapter
 
         viewModel.portfolio.observe(viewLifecycleOwner) { portfolio ->
             portfolio?.let {
@@ -46,14 +49,32 @@ class PortfolioDetailsFragment : BaseFragment<FragmentPortfolioDetailsBinding>()
             }
         }
 
-        adapter.onClick = { stock ->
-            stock?.let {
-                findNavController().navigate(
-                    PortfolioDetailsFragmentDirections
-                        .actionPortfolioDetailsFragmentToAssetDetailsFragment(
-                            stock.id
-                        )
-                )
+        adapter.onClick = { asset ->
+            asset?.let {
+                when (asset) {
+                    is Cash -> findNavController().navigate(
+                        PortfolioDetailsFragmentDirections
+                            .actionPortfolioDetailsFragmentToAssetDetailsCashFragment(
+                                asset.id
+                            )
+                    )
+
+                    is Stock -> findNavController().navigate(
+                        PortfolioDetailsFragmentDirections
+                            .actionPortfolioDetailsFragmentToAssetDetailsStockFragment(
+                                asset.id
+                            )
+                    )
+
+                    is Bond -> findNavController().navigate(
+                        PortfolioDetailsFragmentDirections
+                            .actionPortfolioDetailsFragmentToAssetDetailsBondFragment(
+                                asset.id
+                            )
+                    )
+
+                    else -> throw IllegalArgumentException()
+                }
             }
         }
 
