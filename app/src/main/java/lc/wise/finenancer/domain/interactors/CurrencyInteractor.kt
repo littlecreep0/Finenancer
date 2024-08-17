@@ -1,7 +1,7 @@
 package lc.wise.finenancer.domain.interactors
 
-import lc.wise.finenancer.domain.entity.Currency
 import javax.inject.Inject
+import lc.wise.finenancer.domain.entity.Currency
 import lc.wise.finenancer.domain.repository.CurrencyRepository
 
 class CurrencyInteractor @Inject constructor(

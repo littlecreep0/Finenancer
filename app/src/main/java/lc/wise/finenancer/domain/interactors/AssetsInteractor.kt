@@ -1,8 +1,8 @@
 package lc.wise.finenancer.domain.interactors
 
-import lc.wise.finenancer.domain.entity.Asset
 import javax.inject.Inject
 import javax.inject.Singleton
+import lc.wise.finenancer.domain.entity.Asset
 import lc.wise.finenancer.domain.repository.AssetRepository
 
 @Singleton
