@@ -2,18 +2,18 @@ package lc.wise.finenancer.presentation.portfolio.details.rv
 
 import androidx.recyclerview.widget.RecyclerView
 import lc.wise.finenancer.R
-import lc.wise.finenancer.databinding.ItemStockBinding
-import lc.wise.finenancer.domain.entity.Stock
+import lc.wise.finenancer.databinding.ItemAssetBinding
+import lc.wise.finenancer.domain.entity.Asset
 
 class PortfolioDetailsViewHolder(
-    private val binding: ItemStockBinding
+    private val binding: ItemAssetBinding
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(stock: Stock, onClick: (Stock) -> Unit) {
+    fun bind(asset: Asset, onClick: (Asset) -> Unit) {
         with(binding) {
-            stockIcon.setImageResource(R.drawable.ic_launcher_foreground)
-            stockName.text = stock.name
+            assetIcon.setImageResource(R.drawable.ic_launcher_foreground)
+            assetName.text = asset.name
             root.setOnClickListener {
-                onClick(stock)
+                onClick(asset)
             }
         }
     }

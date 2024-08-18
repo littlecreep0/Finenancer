@@ -7,12 +7,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import lc.wise.finenancer.R
 import lc.wise.finenancer.domain.entity.Portfolio
-import lc.wise.finenancer.domain.repository.PortfolioRepository
+import lc.wise.finenancer.domain.interactors.PortfolioInteractor
 import lc.wise.finenancer.presentation.utils.StringValue
 
 @HiltViewModel
 class PortfolioDetailsViewModel @Inject constructor(
-    private val portfolioRepository: PortfolioRepository
+    private val portfolioInteractor: PortfolioInteractor
 ) : ViewModel() {
     private val _portfolio = MutableLiveData<Portfolio>()
     val portfolio: LiveData<Portfolio> get() = _portfolio
@@ -22,7 +22,7 @@ class PortfolioDetailsViewModel @Inject constructor(
 
     fun findPortfolioById(id: Int) {
         try {
-            _portfolio.value = portfolioRepository.getPortfolioByID(id)
+            _portfolio.value = portfolioInteractor.getPortfolioByID(id)
         } catch (e: IllegalArgumentException) {
             _toast.postValue(StringValue.StringResource(R.string.no_portfolio))
         }

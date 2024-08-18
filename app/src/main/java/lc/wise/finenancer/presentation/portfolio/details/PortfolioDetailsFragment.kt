@@ -42,7 +42,7 @@ class PortfolioDetailsFragment : BaseFragment<FragmentPortfolioDetailsBinding>()
                 with(binding) {
                     portfolioName.text = portfolio.name
                 }
-                adapter.submitList(portfolio.stockList)
+                adapter.submitList(portfolio.assetsList)
             }
         }
 

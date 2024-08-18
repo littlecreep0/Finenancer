@@ -5,7 +5,7 @@ import lc.wise.finenancer.domain.entity.Asset
 
 class AssetsListDiffUtil : DiffUtil.ItemCallback<Asset>() {
     override fun areItemsTheSame(oldItem: Asset, newItem: Asset): Boolean =
-        oldItem == newItem
+        oldItem.id == newItem.id
 
     override fun areContentsTheSame(oldItem: Asset, newItem: Asset): Boolean =
         oldItem == newItem

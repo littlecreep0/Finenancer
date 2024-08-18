@@ -5,7 +5,7 @@ import lc.wise.finenancer.domain.entity.Portfolio
 
 class PortfolioListDiffUtil : DiffUtil.ItemCallback<Portfolio>() {
     override fun areItemsTheSame(oldItem: Portfolio, newItem: Portfolio): Boolean =
-        oldItem == newItem
+        oldItem.id == newItem.id
 
     override fun areContentsTheSame(oldItem: Portfolio, newItem: Portfolio): Boolean =
         oldItem == newItem
