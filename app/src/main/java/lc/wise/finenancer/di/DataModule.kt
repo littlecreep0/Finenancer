@@ -43,6 +43,8 @@ interface DataModule {
         repositoryImpl: StubCurrencyRepository
     ): CurrencyRepository
 
+    @Binds
+    @Singleton
     fun bindSettingStoreRepository(
         repositoryImpl: StubSettingStoreRepository
     ): SettingStoreRepository
