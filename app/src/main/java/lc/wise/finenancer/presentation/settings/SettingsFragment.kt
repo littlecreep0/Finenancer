@@ -3,9 +3,9 @@ package lc.wise.finenancer.presentation.settings
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import lc.wise.finenancer.databinding.FragmentSettingsBinding
-import lc.wise.finenancer.presentation.settings.bottomSheet.CurrencyBottomSheet
 import lc.wise.finenancer.presentation.settings.bottomSheet.CurrencyBottomSheet.Companion.REQUEST_KEY
 import lc.wise.finenancer.presentation.settings.bottomSheet.CurrencyBottomSheet.Companion.SELECTED_CURRENCY
 import lc.wise.finenancer.presentation.utils.BaseFragment
@@ -33,7 +33,8 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
     }
 
     private fun showCurrencyBottomSheet() {
-        val bottomSheet = CurrencyBottomSheet()
-        bottomSheet.show(parentFragmentManager, CurrencyBottomSheet.TAG)
+        findNavController().navigate(
+            SettingsFragmentDirections.actionSettingsFragmentToCurrencyBottomSheet()
+        )
     }
 }

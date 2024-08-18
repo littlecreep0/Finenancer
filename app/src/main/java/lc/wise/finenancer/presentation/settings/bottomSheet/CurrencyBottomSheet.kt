@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import lc.wise.finenancer.databinding.BottomSheetLayoutBinding
+import lc.wise.finenancer.databinding.BottomSheetBinding
 import lc.wise.finenancer.presentation.settings.SettingsViewModel
 import lc.wise.finenancer.presentation.settings.bottomSheet.rv.CurrencyBottomSheetAdapter
 
@@ -19,7 +18,7 @@ import lc.wise.finenancer.presentation.settings.bottomSheet.rv.CurrencyBottomShe
 class CurrencyBottomSheet : BottomSheetDialogFragment() {
     private val settingsViewModel: SettingsViewModel by viewModels()
     private lateinit var currencyAdapter: CurrencyBottomSheetAdapter
-    private var _binding: BottomSheetLayoutBinding? = null
+    private var _binding: BottomSheetBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -27,7 +26,7 @@ class CurrencyBottomSheet : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = BottomSheetLayoutBinding.inflate(inflater, container, false)
+        _binding = BottomSheetBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -35,7 +34,7 @@ class CurrencyBottomSheet : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         currencyAdapter = CurrencyBottomSheetAdapter { selectedCurrency ->
-            lifecycleScope.launch {
+            viewLifecycleOwner.lifecycleScope.launch {
                 settingsViewModel.setDefaultCurrency(selectedCurrency.name)
                 setFragmentResult(
                     REQUEST_KEY,
@@ -48,8 +47,8 @@ class CurrencyBottomSheet : BottomSheetDialogFragment() {
                 dismiss()
             }
         }
-        binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        binding.recyclerView.adapter = currencyAdapter
+
+        binding.bottomSheet.adapter = currencyAdapter
 
         settingsViewModel.currenciesList.observe(viewLifecycleOwner) { currencies ->
             currencyAdapter.submitList(currencies)
