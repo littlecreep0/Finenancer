@@ -7,10 +7,12 @@ import lc.wise.finenancer.domain.repository.CurrencyRepository
 
 class StubCurrencyRepository @Inject constructor() : CurrencyRepository {
 
-    override fun getCurrencyByID(currencyID: Int): Currency? =
+    override suspend fun createCurrency() {}
+
+    override suspend fun getCurrencyByID(currencyID: Int): Currency? =
         StubData.currencyList.find { it.id == currencyID }
 
-    override fun getAllCurrencies(): List<Currency> =
+    override suspend fun getAllCurrencies(): List<Currency> =
         StubData.currencyList
 
     override fun saveCurrency(currency: Currency): Currency? {

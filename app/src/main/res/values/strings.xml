@@ -14,4 +14,8 @@
     <string name="no_portfolio">Failed to load portfolio: no portfolio with this ID found</string>
     <string name="total_amount">Total Amount: %1$,.2f</string>
     <string name="wip">WORK IN PROGRESS</string>
+    <string name="default_currency">Default currency</string>
+    <string name="create">Create New</string>
+    <string name="edit">Edit Existing</string>
+    <string name="delete">Delete Existing</string>
 </resources>

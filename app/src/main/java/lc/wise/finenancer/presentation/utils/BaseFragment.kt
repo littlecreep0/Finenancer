@@ -18,5 +18,11 @@ abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
         _binding = inflateBinding()
         return binding.root
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     abstract fun inflateBinding(): Binding
 }
