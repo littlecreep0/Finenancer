@@ -19,9 +19,9 @@ interface TypeFactory {
 }
 
 class TypeFactoryImpl @Inject constructor() : TypeFactory {
-    override fun type(cash: Cash): Int = AssetViewType.CASH.ordinal
-    override fun type(stock: Stock): Int = AssetViewType.STOCK.ordinal
-    override fun type(bond: Bond): Int = AssetViewType.BOND.ordinal
+    override fun type(cash: Cash): Int = AssetClass.CASH.ordinal
+    override fun type(stock: Stock): Int = AssetClass.STOCK.ordinal
+    override fun type(bond: Bond): Int = AssetClass.BOND.ordinal
 
     override fun holder(
         inflater: LayoutInflater,
@@ -29,9 +29,9 @@ class TypeFactoryImpl @Inject constructor() : TypeFactory {
         viewType: Int
     ): BaseViewHolder<*> {
         return when (viewType) {
-            AssetViewType.CASH.ordinal -> ItemCashViewHolder.createViewHolder(inflater, parent)
-            AssetViewType.STOCK.ordinal -> ItemStockViewHolder.createViewHolder(inflater, parent)
-            AssetViewType.BOND.ordinal -> ItemBondViewHolder.createViewHolder(inflater, parent)
+            AssetClass.CASH.ordinal -> ItemCashViewHolder.createViewHolder(inflater, parent)
+            AssetClass.STOCK.ordinal -> ItemStockViewHolder.createViewHolder(inflater, parent)
+            AssetClass.BOND.ordinal -> ItemBondViewHolder.createViewHolder(inflater, parent)
             else -> throw IllegalArgumentException()
         }
     }
