@@ -4,10 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import lc.wise.finenancer.domain.entity.Asset
-import lc.wise.finenancer.domain.entity.Bond
-import lc.wise.finenancer.domain.entity.Cash
-import lc.wise.finenancer.domain.entity.Stock
-import lc.wise.finenancer.presentation.utils.AssetViewType
 import lc.wise.finenancer.presentation.utils.BaseViewHolder
 import lc.wise.finenancer.presentation.utils.TypeFactoryImpl
 
@@ -16,14 +12,7 @@ class AssetsListAdapter : ListAdapter<Asset, BaseViewHolder<Asset>>(AssetsListDi
     private val typeFactory = TypeFactoryImpl()
     var onClick: (Asset) -> Unit = {}
 
-    override fun getItemViewType(position: Int): Int {
-        return when (getItem(position)) {
-            is Cash -> AssetViewType.CASH.ordinal
-            is Stock -> AssetViewType.STOCK.ordinal
-            is Bond -> AssetViewType.BOND.ordinal
-            else -> super.getItemViewType(position)
-        }
-    }
+    override fun getItemViewType(position: Int) = getItem(position).type(typeFactory)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<Asset> {
         return typeFactory.holder(

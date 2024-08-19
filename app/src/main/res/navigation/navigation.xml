@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
+    android:label="@string/currency_bottom_sheet"
     app:startDestination="@id/homeFragment">
 
     <fragment
@@ -90,7 +91,16 @@
         android:id="@+id/settingsFragment"
         android:name="lc.wise.finenancer.presentation.settings.SettingsFragment"
         android:label="@string/settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_settingsFragment_to_currencyBottomSheet"
+            app:destination="@id/bottom_sheet" />
+    </fragment>
+    <dialog
+        android:id="@+id/bottom_sheet"
+        android:name="lc.wise.finenancer.presentation.settings.bottomSheet.CurrencyBottomSheet"
+        android:label="Currency Bottom Sheet"
+        tools:layout="@layout/bottom_sheet" />
     <fragment
         android:id="@+id/assetDetailsBondFragment"
         android:name="lc.wise.finenancer.presentation.assets.details.AssetDetailsBondFragment"
