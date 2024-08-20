@@ -12,11 +12,10 @@ import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import lc.wise.finenancer.R
 import lc.wise.finenancer.databinding.FragmentPortfolioDetailsBinding
-import lc.wise.finenancer.domain.entity.Bond
-import lc.wise.finenancer.domain.entity.Cash
-import lc.wise.finenancer.domain.entity.Stock
 import lc.wise.finenancer.presentation.portfolio.details.rv.PortfolioDetailsAdapter
+import lc.wise.finenancer.presentation.utils.AssetUI
 import lc.wise.finenancer.presentation.utils.BaseFragment
+import lc.wise.finenancer.presentation.utils.toAssetUIList
 
 @AndroidEntryPoint
 class PortfolioDetailsFragment : BaseFragment<FragmentPortfolioDetailsBinding>() {
@@ -44,45 +43,45 @@ class PortfolioDetailsFragment : BaseFragment<FragmentPortfolioDetailsBinding>()
             portfolio?.let {
                 with(binding) {
                     portfolioName.text = portfolio.name
+                    portfolioAssets.text = getString(
+                        R.string.assets_in_portfolio,
+                        portfolio.assetsList.size
+                    )
                 }
-                adapter.submitList(portfolio.assetsList)
+                adapter.submitList(portfolio.assetsList.toAssetUIList())
             }
         }
 
         adapter.onClick = { asset ->
             asset?.let {
-                when (asset) {
-                    is Cash -> findNavController().navigate(
+                val action = when (asset) {
+                    is AssetUI.CashUI ->
                         PortfolioDetailsFragmentDirections
                             .actionPortfolioDetailsFragmentToAssetDetailsCashFragment(
                                 asset.id
                             )
-                    )
 
-                    is Stock -> findNavController().navigate(
+                    is AssetUI.StockUI ->
                         PortfolioDetailsFragmentDirections
                             .actionPortfolioDetailsFragmentToAssetDetailsStockFragment(
                                 asset.id
                             )
-                    )
 
-                    is Bond -> findNavController().navigate(
+                    is AssetUI.BondUI ->
                         PortfolioDetailsFragmentDirections
                             .actionPortfolioDetailsFragmentToAssetDetailsBondFragment(
                                 asset.id
                             )
-                    )
-
-                    else -> throw IllegalArgumentException()
                 }
+                findNavController().navigate(action)
             }
         }
 
         viewModel.toast.observe(viewLifecycleOwner) { toast ->
             toast?.let {
                 Toast.makeText(
-                    requireActivity(),
-                    it.asString(requireContext()),
+                    requireContext(),
+                    it,
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -97,7 +96,7 @@ class PortfolioDetailsFragment : BaseFragment<FragmentPortfolioDetailsBinding>()
         return when (item.itemId) {
             R.id.details_options_edit -> {
                 Toast.makeText(
-                    requireActivity(),
+                    requireContext(),
                     R.string.wip,
                     Toast.LENGTH_SHORT
                 ).show()
@@ -106,7 +105,7 @@ class PortfolioDetailsFragment : BaseFragment<FragmentPortfolioDetailsBinding>()
 
             R.id.details_options_delete -> {
                 Toast.makeText(
-                    requireActivity(),
+                    requireContext(),
                     R.string.wip,
                     Toast.LENGTH_SHORT
                 ).show()
@@ -115,7 +114,7 @@ class PortfolioDetailsFragment : BaseFragment<FragmentPortfolioDetailsBinding>()
 
             R.id.details_options_history -> {
                 Toast.makeText(
-                    requireActivity(),
+                    requireContext(),
                     R.string.wip,
                     Toast.LENGTH_SHORT
                 ).show()

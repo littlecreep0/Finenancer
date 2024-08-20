@@ -54,7 +54,7 @@ class PortfolioListFragment : BaseFragment<FragmentPortfolioListBinding>() {
         return when (item.itemId) {
             R.id.lists_options_create -> {
                 Toast.makeText(
-                    requireActivity(),
+                    requireContext(),
                     R.string.wip,
                     Toast.LENGTH_SHORT
                 ).show()
@@ -63,7 +63,7 @@ class PortfolioListFragment : BaseFragment<FragmentPortfolioListBinding>() {
 
             R.id.lists_options_edit -> {
                 Toast.makeText(
-                    requireActivity(),
+                    requireContext(),
                     R.string.wip,
                     Toast.LENGTH_SHORT
                 ).show()
@@ -72,7 +72,7 @@ class PortfolioListFragment : BaseFragment<FragmentPortfolioListBinding>() {
 
             R.id.lists_options_delete -> {
                 Toast.makeText(
-                    requireActivity(),
+                    requireContext(),
                     R.string.wip,
                     Toast.LENGTH_SHORT
                 ).show()
