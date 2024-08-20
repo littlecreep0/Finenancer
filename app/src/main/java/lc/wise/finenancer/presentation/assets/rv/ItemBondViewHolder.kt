@@ -4,7 +4,6 @@ import lc.wise.finenancer.R
 import lc.wise.finenancer.databinding.ItemBondBinding
 import lc.wise.finenancer.presentation.utils.AssetUI
 import lc.wise.finenancer.presentation.utils.BaseViewHolder
-import lc.wise.finenancer.presentation.utils.StringValue
 
 class ItemBondViewHolder(
     val binding: ItemBondBinding
@@ -16,7 +15,7 @@ class ItemBondViewHolder(
             bondName.text = bondUI.name
             bondTicker.text = bondUI.ticker
             bondCountry.text = bondUI.country
-            bondDate.text = StringValue.getStringRes(
+            bondDate.text = view.context.getString(
                 R.string.date,
                 bondUI.maturityDateDay,
                 bondUI.maturityDateMonth,
