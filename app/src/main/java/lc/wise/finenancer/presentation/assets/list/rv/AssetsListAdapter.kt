@@ -3,20 +3,26 @@ package lc.wise.finenancer.presentation.assets.list.rv
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import lc.wise.finenancer.databinding.ItemAssetBinding
-import lc.wise.finenancer.domain.entity.Asset
+import lc.wise.finenancer.presentation.utils.AssetUI
+import lc.wise.finenancer.presentation.utils.BaseViewHolder
+import lc.wise.finenancer.presentation.utils.TypeFactoryImpl
 
-class AssetsListAdapter : ListAdapter<Asset, AssetsListViewHolder>(AssetsListDiffUtil()) {
+class AssetsListAdapter : ListAdapter<AssetUI, BaseViewHolder<AssetUI>>(AssetsListDiffUtil()) {
 
-    var onClick: (Asset) -> Unit = {}
+    private val typeFactory = TypeFactoryImpl()
+    var onClick: (AssetUI) -> Unit = {}
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AssetsListViewHolder {
-        return AssetsListViewHolder(
-            ItemAssetBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        )
+    override fun getItemViewType(position: Int) = getItem(position).type(typeFactory)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<AssetUI> {
+        return typeFactory.holder(
+            LayoutInflater.from(parent.context),
+            parent,
+            viewType
+        ) as BaseViewHolder<AssetUI>
     }
 
-    override fun onBindViewHolder(holder: AssetsListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BaseViewHolder<AssetUI>, position: Int) {
         holder.bind(getItem(position), onClick)
     }
 }

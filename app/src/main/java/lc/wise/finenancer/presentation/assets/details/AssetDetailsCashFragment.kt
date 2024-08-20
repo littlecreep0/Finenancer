@@ -11,16 +11,15 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import lc.wise.finenancer.R
-import lc.wise.finenancer.databinding.FragmentAssetDetailsBinding
+import lc.wise.finenancer.databinding.FragmentCashDetailsBinding
 import lc.wise.finenancer.presentation.utils.BaseFragment
 
 @AndroidEntryPoint
-class AssetDetailsFragment : BaseFragment<FragmentAssetDetailsBinding>() {
-    private val abstractValue: Double = 12_345_678.90
+class AssetDetailsCashFragment : BaseFragment<FragmentCashDetailsBinding>() {
     private val viewModel: AssetDetailsViewModel by viewModels()
-    val args: AssetDetailsFragmentArgs by navArgs()
+    val args: AssetDetailsCashFragmentArgs by navArgs()
 
-    override fun inflateBinding() = FragmentAssetDetailsBinding.inflate(layoutInflater)
+    override fun inflateBinding() = FragmentCashDetailsBinding.inflate(layoutInflater)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,13 +34,13 @@ class AssetDetailsFragment : BaseFragment<FragmentAssetDetailsBinding>() {
 
         viewModel.findAssetById(assetId)
 
-        viewModel.asset.observe(viewLifecycleOwner) { asset ->
-            asset?.let {
+        viewModel.cash.observe(viewLifecycleOwner) { cash ->
+            cash?.let {
                 with(binding) {
-                    assetName.text = asset.name
-                    assetTotalAmount.text = getString(
-                        R.string.total_amount,
-                        abstractValue
+                    cashName.text = cash.name
+                    cashWorth.text = getString(
+                        R.string.worth,
+                        cash.worth
                     )
                 }
             }
@@ -50,9 +49,7 @@ class AssetDetailsFragment : BaseFragment<FragmentAssetDetailsBinding>() {
         viewModel.toast.observe(viewLifecycleOwner) { toast ->
             toast?.let {
                 Toast.makeText(
-                    requireActivity(),
-                    it.asString(requireContext()),
-                    Toast.LENGTH_SHORT
+                    requireContext(), it, Toast.LENGTH_SHORT
                 ).show()
             }
         }
@@ -66,21 +63,22 @@ class AssetDetailsFragment : BaseFragment<FragmentAssetDetailsBinding>() {
         return when (item.itemId) {
             R.id.details_options_edit -> {
                 Toast.makeText(
-                    requireActivity(), R.string.wip, Toast.LENGTH_SHORT
+                    requireContext(), R.string.wip, Toast.LENGTH_SHORT
                 ).show()
                 true
             }
 
             R.id.details_options_delete -> {
                 Toast.makeText(
-                    requireActivity(), R.string.wip, Toast.LENGTH_SHORT
+                    requireContext(), R.string.wip, Toast.LENGTH_SHORT
                 ).show()
                 true
             }
 
             R.id.details_options_settings -> {
                 findNavController().navigate(
-                    AssetDetailsFragmentDirections.actionAssetDetailsFragmentToSettingsFragment()
+                    AssetDetailsCashFragmentDirections
+                        .actionAssetDetailsCashFragmentToSettingsFragment()
                 )
                 true
             }
