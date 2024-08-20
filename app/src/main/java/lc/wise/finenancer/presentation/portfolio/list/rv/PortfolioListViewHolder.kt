@@ -12,6 +12,10 @@ class PortfolioListViewHolder(
         with(binding) {
             portfolioIcon.setImageResource(R.drawable.ic_launcher_foreground)
             portfolioName.text = portfolio.name
+            portfolioAssetsAmount.text = root.context.getString(
+                R.string.assets_in_portfolio,
+                portfolio.assetsList.size
+            )
             root.setOnClickListener {
                 onClick(portfolio)
             }

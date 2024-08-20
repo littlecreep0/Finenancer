@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">Finenancer</string>
+    <string name="home">Home</string>
     <string name="assets_list">Assets List</string>
     <string name="portfolio_list">Portfolio List</string>
+    <string name="cash_details">Cash Details</string>
+    <string name="stock_details">Stock Details</string>
+    <string name="bond_details">Bond Details</string>
+    <string name="portfolio_details">Portfolio Details</string>
     <string name="lists_create_new">Create New</string>
     <string name="lists_edit_existing">Edit Existing</string>
     <string name="lists_delete_existing">Delete Existing</string>
@@ -9,13 +14,16 @@
     <string name="details_delete">Delete</string>
     <string name="portfolio_history">Portfolio History</string>
     <string name="settings">App Settings</string>
-    <string name="assets_in_portfolio">Assets in Portfolio:</string>
+    <string name="assets_in_portfolio">Assets in Portfolio: %1$d</string>
     <string name="no_asset">Failed to load asset: no asset with this ID found</string>
     <string name="no_portfolio">Failed to load portfolio: no portfolio with this ID found</string>
-    <string name="total_amount">Total Amount: %1$,.2f</string>
+    <string name="worth">Worth: %1$,.2f</string>
+    <string name="country">Country: %1$s</string>
+    <string name="dividends">Dividends: %1$,.2f</string>
+    <string name="fixed_payment">Payment: %1$,.2f</string>
+    <string name="payment_until">Until: %1$d/%2$d/%3$d</string>
+    <string name="date">%1$d/%2$d/%3$d</string>
     <string name="wip">WORK IN PROGRESS</string>
     <string name="default_currency">Default currency</string>
-    <string name="create">Create New</string>
-    <string name="edit">Edit Existing</string>
-    <string name="delete">Delete Existing</string>
+    <string name="currency_bottom_sheet">Currency Bottom Sheet</string>
 </resources>

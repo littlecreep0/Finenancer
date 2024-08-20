@@ -3,66 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
+    android:label="@string/currency_bottom_sheet"
     app:startDestination="@id/homeFragment">
 
-    <dialog
-        android:id="@+id/bottom_sheet"
-        android:name="lc.wise.finenancer.presentation.settings.bottomSheet.CurrencyBottomSheet"
-        android:label="Currency Bottom Sheet"
-        tools:layout="@layout/bottom_sheet" />
-    <fragment
-        android:id="@+id/assetsListFragment"
-        android:name="lc.wise.finenancer.presentation.assets.list.AssetsListFragment"
-        android:label="Assets List"
-        tools:layout="@layout/fragment_assets_list">
-        <action
-            android:id="@+id/action_assetsListFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-        <action
-            android:id="@+id/action_assetsListFragment_to_assetDetailsFragment"
-            app:destination="@id/assetDetailsFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-    </fragment>
-    <fragment
-        android:id="@+id/portfolioListFragment"
-        android:name="lc.wise.finenancer.presentation.portfolio.list.PortfolioListFragment"
-        android:label="Portfolio List"
-        tools:layout="@layout/fragment_portfolio_list">
-        <action
-            android:id="@+id/action_portfolioListFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-        <action
-            android:id="@+id/action_portfolioListFragment_to_portfolioDetailsFragment"
-            app:destination="@id/portfolioDetailsFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-    </fragment>
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="lc.wise.finenancer.presentation.settings.SettingsFragment"
-        android:label="Settings"
-        tools:layout="@layout/fragment_settings">
-        <action
-            android:id="@+id/action_settingsFragment_to_currencyBottomSheet"
-            app:destination="@id/bottom_sheet" />
-    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="lc.wise.finenancer.presentation.home.HomeFragment"
-        android:label="Home"
+        android:label="@string/home"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_assetsListFragment"
@@ -87,11 +34,96 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
-        android:id="@+id/assetDetailsFragment"
-        android:name="lc.wise.finenancer.presentation.assets.details.AssetDetailsFragment"
-        android:label="Asset Details">
+        android:id="@+id/assetsListFragment"
+        android:name="lc.wise.finenancer.presentation.assets.list.AssetsListFragment"
+        android:label="@string/assets_list"
+        tools:layout="@layout/fragment_assets_list">
         <action
-            android:id="@+id/action_assetDetailsFragment_to_settingsFragment"
+            android:id="@+id/action_assetsListFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_assetsListFragment_to_assetDetailsBondFragment"
+            app:destination="@id/assetDetailsBondFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_assetsListFragment_to_assetDetailsCashFragment"
+            app:destination="@id/assetDetailsCashFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_assetsListFragment_to_assetDetailsStockFragment"
+            app:destination="@id/assetDetailsStockFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/portfolioListFragment"
+        android:name="lc.wise.finenancer.presentation.portfolio.list.PortfolioListFragment"
+        android:label="@string/portfolio_list"
+        tools:layout="@layout/fragment_portfolio_list">
+        <action
+            android:id="@+id/action_portfolioListFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_portfolioListFragment_to_portfolioDetailsFragment"
+            app:destination="@id/portfolioDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="lc.wise.finenancer.presentation.settings.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_settingsFragment_to_currencyBottomSheet"
+            app:destination="@id/bottom_sheet" />
+    </fragment>
+    <dialog
+        android:id="@+id/bottom_sheet"
+        android:name="lc.wise.finenancer.presentation.settings.bottomSheet.CurrencyBottomSheet"
+        android:label="Currency Bottom Sheet"
+        tools:layout="@layout/bottom_sheet" />
+    <fragment
+        android:id="@+id/assetDetailsBondFragment"
+        android:name="lc.wise.finenancer.presentation.assets.details.AssetDetailsBondFragment"
+        android:label="@string/bond_details"
+        tools:layout="@layout/fragment_bond_details">
+        <action
+            android:id="@+id/action_assetDetailsBondFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <argument
+            android:name="asset_id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/assetDetailsCashFragment"
+        android:name="lc.wise.finenancer.presentation.assets.details.AssetDetailsCashFragment"
+        android:label="@string/cash_details"
+        tools:layout="@layout/fragment_cash_details">
+        <action
+            android:id="@+id/action_assetDetailsCashFragment_to_settingsFragment"
             app:destination="@id/settingsFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
@@ -104,7 +136,8 @@
     <fragment
         android:id="@+id/portfolioDetailsFragment"
         android:name="lc.wise.finenancer.presentation.portfolio.details.PortfolioDetailsFragment"
-        android:label="Portfolio Details">
+        android:label="@string/portfolio_details"
+        tools:layout="@layout/fragment_portfolio_details">
         <action
             android:id="@+id/action_portfolioDetailsFragment_to_settingsFragment"
             app:destination="@id/settingsFragment"
@@ -113,14 +146,44 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
-            android:id="@+id/action_portfolioDetailsFragment_to_assetDetailsFragment"
-            app:destination="@id/assetDetailsFragment"
+            android:id="@+id/action_portfolioDetailsFragment_to_assetDetailsBondFragment"
+            app:destination="@id/assetDetailsBondFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_portfolioDetailsFragment_to_assetDetailsCashFragment"
+            app:destination="@id/assetDetailsCashFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_portfolioDetailsFragment_to_assetDetailsStockFragment"
+            app:destination="@id/assetDetailsStockFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <argument
             android:name="portfolio_id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/assetDetailsStockFragment"
+        android:name="lc.wise.finenancer.presentation.assets.details.AssetDetailsStockFragment"
+        android:label="@string/stock_details"
+        tools:layout="@layout/fragment_stock_details">
+        <action
+            android:id="@+id/action_assetDetailsStockFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <argument
+            android:name="asset_id"
             app:argType="integer" />
     </fragment>
 </navigation>

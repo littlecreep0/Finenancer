@@ -11,6 +11,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import lc.wise.finenancer.data.api.ApiCurrencyExchangeRateRepository
+import javax.inject.Singleton
 import lc.wise.finenancer.data.stub.repository.StubAssetRepository
 import lc.wise.finenancer.data.stub.repository.StubCurrencyRepository
 import lc.wise.finenancer.data.stub.repository.StubPortfolioRepository
@@ -20,7 +21,6 @@ import lc.wise.finenancer.domain.repository.CurrencyExchangeRateRepository
 import lc.wise.finenancer.domain.repository.CurrencyRepository
 import lc.wise.finenancer.domain.repository.PortfolioRepository
 import lc.wise.finenancer.domain.repository.SettingStoreRepository
-import javax.inject.Singleton
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 

@@ -2,12 +2,12 @@ package lc.wise.finenancer.data.stub
 
 import java.time.LocalDate
 import lc.wise.finenancer.domain.entity.Asset
-import lc.wise.finenancer.domain.entity.Bond
-import lc.wise.finenancer.domain.entity.Cash
+import lc.wise.finenancer.domain.entity.Asset.Bond
+import lc.wise.finenancer.domain.entity.Asset.Cash
+import lc.wise.finenancer.domain.entity.Asset.Stock
 import lc.wise.finenancer.domain.entity.Country
 import lc.wise.finenancer.domain.entity.Currency
 import lc.wise.finenancer.domain.entity.Portfolio
-import lc.wise.finenancer.domain.entity.Stock
 
 object StubData {
 
