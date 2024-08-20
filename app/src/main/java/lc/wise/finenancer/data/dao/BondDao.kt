@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
-import lc.wise.finenancer.domain.entity.Bond
+import lc.wise.finenancer.domain.entity.Asset.Bond
 
 @Dao
 interface BondDao {

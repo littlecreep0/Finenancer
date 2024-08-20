@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import lc.wise.finenancer.R
-import lc.wise.finenancer.domain.entity.Bond
-import lc.wise.finenancer.domain.entity.Cash
-import lc.wise.finenancer.domain.entity.Stock
+import lc.wise.finenancer.domain.entity.Asset.Bond
+import lc.wise.finenancer.domain.entity.Asset.Cash
+import lc.wise.finenancer.domain.entity.Asset.Stock
 import lc.wise.finenancer.domain.interactors.AssetsInteractor
 import lc.wise.finenancer.presentation.utils.StringValue
 
@@ -26,19 +26,21 @@ class AssetDetailsViewModel @Inject constructor(
     private val _bond = MutableLiveData<Bond?>()
     val bond: LiveData<Bond?> get() = _bond
 
-    private val _toast by lazy { MutableLiveData<StringValue>() }
-    val toast: LiveData<StringValue> get() = _toast
+    private val _toast = MutableLiveData<String>()
+    val toast: LiveData<String> get() = _toast
 
     fun findAssetById(id: Int) {
         try {
-            when (val asset = assetInteractor.getAssetByID(id)) {
-                is Cash -> _cash.value = asset
-                is Stock -> _stock.value = asset
-                is Bond -> _bond.value = asset
-                else -> throw IllegalArgumentException()
+            val asset = assetInteractor.getAssetByID(id)
+            asset?.let {
+                when (asset) {
+                    is Cash -> _cash.value = asset
+                    is Stock -> _stock.value = asset
+                    is Bond -> _bond.value = asset
+                }
             }
         } catch (e: IllegalArgumentException) {
-            _toast.postValue(StringValue.StringResource(R.string.no_asset))
+            _toast.postValue(StringValue.getStringRes(R.string.no_asset))
         }
     }
 }

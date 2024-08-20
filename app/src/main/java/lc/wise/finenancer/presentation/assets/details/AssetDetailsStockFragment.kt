@@ -54,7 +54,7 @@ class AssetDetailsStockFragment : BaseFragment<FragmentStockDetailsBinding>() {
         viewModel.toast.observe(viewLifecycleOwner) { toast ->
             toast?.let {
                 Toast.makeText(
-                    requireActivity(), it.asString(requireContext()), Toast.LENGTH_SHORT
+                    requireContext(), it, Toast.LENGTH_SHORT
                 ).show()
             }
         }
@@ -68,14 +68,14 @@ class AssetDetailsStockFragment : BaseFragment<FragmentStockDetailsBinding>() {
         return when (item.itemId) {
             R.id.details_options_edit -> {
                 Toast.makeText(
-                    requireActivity(), R.string.wip, Toast.LENGTH_SHORT
+                    requireContext(), R.string.wip, Toast.LENGTH_SHORT
                 ).show()
                 true
             }
 
             R.id.details_options_delete -> {
                 Toast.makeText(
-                    requireActivity(), R.string.wip, Toast.LENGTH_SHORT
+                    requireContext(), R.string.wip, Toast.LENGTH_SHORT
                 ).show()
                 true
             }

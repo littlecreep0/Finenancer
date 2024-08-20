@@ -11,11 +11,10 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import lc.wise.finenancer.R
 import lc.wise.finenancer.databinding.FragmentAssetsListBinding
-import lc.wise.finenancer.domain.entity.Bond
-import lc.wise.finenancer.domain.entity.Cash
-import lc.wise.finenancer.domain.entity.Stock
 import lc.wise.finenancer.presentation.assets.list.rv.AssetsListAdapter
+import lc.wise.finenancer.presentation.utils.AssetUI
 import lc.wise.finenancer.presentation.utils.BaseFragment
+import lc.wise.finenancer.presentation.utils.toAssetUIList
 
 @AndroidEntryPoint
 class AssetsListFragment : BaseFragment<FragmentAssetsListBinding>() {
@@ -35,35 +34,31 @@ class AssetsListFragment : BaseFragment<FragmentAssetsListBinding>() {
         binding.assetsList.adapter = adapter
 
         viewModel.assetsList.observe(viewLifecycleOwner) { assets ->
-            assets?.let { adapter.submitList(assets) }
+            assets?.let { adapter.submitList(assets.toAssetUIList()) }
         }
 
         adapter.onClick = { asset ->
             asset?.let {
-                when (asset) {
-                    is Cash -> findNavController().navigate(
+                val action = when (asset) {
+                    is AssetUI.CashUI ->
                         AssetsListFragmentDirections
                             .actionAssetsListFragmentToAssetDetailsCashFragment(
                                 asset.id
                             )
-                    )
 
-                    is Stock -> findNavController().navigate(
+                    is AssetUI.StockUI ->
                         AssetsListFragmentDirections
                             .actionAssetsListFragmentToAssetDetailsStockFragment(
                                 asset.id
                             )
-                    )
 
-                    is Bond -> findNavController().navigate(
+                    is AssetUI.BondUI ->
                         AssetsListFragmentDirections
                             .actionAssetsListFragmentToAssetDetailsBondFragment(
                                 asset.id
                             )
-                    )
-
-                    else -> throw IllegalArgumentException()
                 }
+                findNavController().navigate(action)
             }
         }
     }
@@ -76,7 +71,7 @@ class AssetsListFragment : BaseFragment<FragmentAssetsListBinding>() {
         return when (item.itemId) {
             R.id.lists_options_create -> {
                 Toast.makeText(
-                    requireActivity(),
+                    requireContext(),
                     R.string.wip,
                     Toast.LENGTH_SHORT
                 ).show()
@@ -85,7 +80,7 @@ class AssetsListFragment : BaseFragment<FragmentAssetsListBinding>() {
 
             R.id.lists_options_edit -> {
                 Toast.makeText(
-                    requireActivity(),
+                    requireContext(),
                     R.string.wip,
                     Toast.LENGTH_SHORT
                 ).show()
@@ -94,7 +89,7 @@ class AssetsListFragment : BaseFragment<FragmentAssetsListBinding>() {
 
             R.id.lists_options_delete -> {
                 Toast.makeText(
-                    requireActivity(),
+                    requireContext(),
                     R.string.wip,
                     Toast.LENGTH_SHORT
                 ).show()

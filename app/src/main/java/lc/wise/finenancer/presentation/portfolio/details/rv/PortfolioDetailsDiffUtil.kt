@@ -1,12 +1,12 @@
 package lc.wise.finenancer.presentation.portfolio.details.rv
 
 import androidx.recyclerview.widget.DiffUtil
-import lc.wise.finenancer.domain.entity.Asset
+import lc.wise.finenancer.presentation.utils.AssetUI
 
-class PortfolioDetailsDiffUtil : DiffUtil.ItemCallback<Asset>() {
-    override fun areItemsTheSame(oldItem: Asset, newItem: Asset): Boolean =
+class PortfolioDetailsDiffUtil : DiffUtil.ItemCallback<AssetUI>() {
+    override fun areItemsTheSame(oldItem: AssetUI, newItem: AssetUI): Boolean =
         oldItem.id == newItem.id
 
-    override fun areContentsTheSame(oldItem: Asset, newItem: Asset): Boolean =
+    override fun areContentsTheSame(oldItem: AssetUI, newItem: AssetUI): Boolean =
         oldItem == newItem
 }

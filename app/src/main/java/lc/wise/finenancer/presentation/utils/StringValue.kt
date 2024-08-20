@@ -1,24 +1,11 @@
 package lc.wise.finenancer.presentation.utils
 
-import android.content.Context
 import androidx.annotation.StringRes
+import lc.wise.finenancer.App
 
-sealed class StringValue {
-
-    data class DynamicString(val value: String) : StringValue()
-
-    object Empty : StringValue()
-
-    class StringResource(
-        @StringRes val resId: Int,
-        vararg val args: Any
-    ) : StringValue()
-
-    fun asString(context: Context?): String {
-        return when (this) {
-            is Empty -> ""
-            is DynamicString -> value
-            is StringResource -> context?.getString(resId, *args).orEmpty()
-        } // all of this just to use string resources in viewmodels
-    }
+object StringValue {
+    fun getStringRes(
+        @StringRes stringRes: Int,
+        vararg formatArgs: Any = emptyArray()
+    ): String = App.instance.getString(stringRes, *formatArgs)
 }

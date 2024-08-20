@@ -1,10 +1,10 @@
 package lc.wise.finenancer.data.stub.database
 
+import javax.inject.Inject
+import kotlin.random.Random
 import lc.wise.finenancer.data.dao.PortfolioDao
 import lc.wise.finenancer.domain.entity.Portfolio
 import lc.wise.finenancer.domain.repository.PortfolioRepository
-import javax.inject.Inject
-import kotlin.random.Random
 
 class StubPortfolioEntity @Inject constructor(
     private val portfolioDao: PortfolioDao

@@ -17,14 +17,14 @@ class PortfolioDetailsViewModel @Inject constructor(
     private val _portfolio = MutableLiveData<Portfolio>()
     val portfolio: LiveData<Portfolio> get() = _portfolio
 
-    private val _toast by lazy { MutableLiveData<StringValue>() }
-    val toast: LiveData<StringValue> get() = _toast
+    private val _toast = MutableLiveData<String>()
+    val toast: LiveData<String> get() = _toast
 
     fun findPortfolioById(id: Int) {
         try {
             _portfolio.value = portfolioInteractor.getPortfolioByID(id)
         } catch (e: IllegalArgumentException) {
-            _toast.postValue(StringValue.StringResource(R.string.no_portfolio))
+            _toast.postValue(StringValue.getStringRes(R.string.no_portfolio))
         }
     }
 }
