@@ -12,7 +12,7 @@ class ItemBondViewHolder(
     override fun bind(bondUI: AssetUI.BondUI, onClick: (AssetUI.BondUI) -> Unit) {
         with(binding) {
             bondIcon.setImageResource(R.drawable.ic_launcher_foreground)
-            bondName.text = bondUI.name
+            bondName.text = bondUI.assetName
             bondTicker.text = bondUI.ticker
             bondCountry.text = bondUI.country
             bondDate.text = view.context.getString(

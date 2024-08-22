@@ -39,7 +39,7 @@ class PortfolioListFragment : BaseFragment<FragmentPortfolioListBinding>() {
                 findNavController().navigate(
                     PortfolioListFragmentDirections
                         .actionPortfolioListFragmentToPortfolioDetailsFragment(
-                            portfolio.id
+                            portfolio.portfolioId
                         )
                 )
             }

@@ -12,7 +12,7 @@ class ItemStockViewHolder(
     override fun bind(stockUI: AssetUI.StockUI, onClick: (AssetUI.StockUI) -> Unit) {
         with(binding) {
             stockIcon.setImageResource(R.drawable.ic_launcher_foreground)
-            stockName.text = stockUI.name
+            stockName.text = stockUI.assetName
             stockTicker.text = stockUI.ticker
             stockCountry.text = stockUI.country
             root.setOnClickListener {

@@ -99,33 +99,33 @@ class StubAssetEntity @Inject constructor(
     override fun saveAsset(asset: Asset): Asset = when (asset) {
         is Cash -> {
             cashDao.saveCash(asset.toCashEntity())
-            cashDao.getCashById(asset.id).toCash(
+            cashDao.getCashById(asset.assetId).toCash(
                 currencyDao.getCurrencyByID(
-                    asset.currency.id
+                    asset.currency.currencyId
                 ).toCurrency()
             )
         }
 
         is Stock -> {
             stockDao.saveStock(asset.toStockEntity())
-            stockDao.getStockById(asset.id).toStock(
+            stockDao.getStockById(asset.assetId).toStock(
                 currencyDao.getCurrencyByID(
-                    asset.currency.id
+                    asset.currency.currencyId
                 ).toCurrency(),
                 countryDao.getCountryByID(
-                    asset.country.id
+                    asset.country.countryId
                 ).toCountry()
             )
         }
 
         is Bond -> {
             bondDao.saveBond(asset.toBondEntity())
-            bondDao.getBondById(asset.id).toBond(
+            bondDao.getBondById(asset.assetId).toBond(
                 currencyDao.getCurrencyByID(
-                    asset.currency.id
+                    asset.currency.currencyId
                 ).toCurrency(),
                 countryDao.getCountryByID(
-                    asset.country.id
+                    asset.country.countryId
                 ).toCountry()
             )
         }

@@ -35,12 +35,12 @@ class CurrencyBottomSheet : BottomSheetDialogFragment() {
 
         currencyAdapter = CurrencyBottomSheetAdapter { selectedCurrency ->
             viewLifecycleOwner.lifecycleScope.launch {
-                settingsViewModel.setDefaultCurrency(selectedCurrency.name)
+                settingsViewModel.setDefaultCurrency(selectedCurrency.currencyName)
                 setFragmentResult(
                     REQUEST_KEY,
                     Bundle().apply {
                         putString(
-                            SELECTED_CURRENCY, selectedCurrency.name
+                            SELECTED_CURRENCY, selectedCurrency.currencyName
                         )
                     }
                 )

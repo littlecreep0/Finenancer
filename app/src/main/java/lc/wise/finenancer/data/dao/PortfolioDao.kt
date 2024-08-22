@@ -11,7 +11,7 @@ interface PortfolioDao {
     @Query("SELECT * FROM portfolio_list")
     fun getPortfolioList(): List<PortfolioEntity>
 
-    @Query("SELECT * FROM portfolio_list WHERE id = :portfolioID")
+    @Query("SELECT * FROM portfolio_list WHERE portfolio_id = :portfolioID")
     fun getPortfolioById(portfolioID: Int): PortfolioEntity
 
     @Upsert

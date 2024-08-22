@@ -8,13 +8,13 @@ import lc.wise.finenancer.data.entity.AssetEntity
 
 @Dao
 interface AssetDao {
-    @Query("SELECT type FROM assets_list WHERE id = :assetID")
+    @Query("SELECT asset_type FROM assets_list WHERE asset_id = :assetID")
     fun getAssetType(assetID: Int): String
 
-    @Query("SELECT id FROM assets_list ORDER BY id DESC LIMIT 1")
+    @Query("SELECT asset_id FROM assets_list ORDER BY asset_id DESC LIMIT 1")
     fun getLastAssetID(): Int
 
-    @Query("SELECT * FROM assets_list WHERE id = :assetID")
+    @Query("SELECT * FROM assets_list WHERE asset_id = :assetID")
     fun getAssetByID(assetID: Int): AssetEntity
 
     @Upsert

@@ -22,7 +22,7 @@ class StubSettingStoreRepository @Inject constructor(
         return withContext(Dispatchers.IO) {
             dataStore.data.map { settings ->
                 settings[key]
-                    ?: StubData.currencyList.firstOrNull()?.name.orEmpty()
+                    ?: StubData.currencyList.firstOrNull()?.currencyName.orEmpty()
             }.first()
         }
     }

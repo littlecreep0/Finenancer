@@ -37,11 +37,11 @@ class AssetDetailsBondFragment : BaseFragment<FragmentBondDetailsBinding>() {
         viewModel.bond.observe(viewLifecycleOwner) { bond ->
             bond?.let {
                 with(binding) {
-                    bondName.text = bond.name
+                    bondName.text = bond.assetName
                     bondTicker.text = bond.ticker
                     bondCountry.text = getString(
                         R.string.country,
-                        bond.country.name
+                        bond.country.countryName
                     )
                     bondPaymentAmount.text = getString(
                         R.string.fixed_payment,

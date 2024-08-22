@@ -5,7 +5,7 @@ import lc.wise.finenancer.presentation.utils.AssetUI
 
 class PortfolioDetailsDiffUtil : DiffUtil.ItemCallback<AssetUI>() {
     override fun areItemsTheSame(oldItem: AssetUI, newItem: AssetUI): Boolean =
-        oldItem.id == newItem.id
+        oldItem.assetId == newItem.assetId
 
     override fun areContentsTheSame(oldItem: AssetUI, newItem: AssetUI): Boolean =
         oldItem == newItem

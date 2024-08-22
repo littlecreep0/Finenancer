@@ -8,7 +8,7 @@ import lc.wise.finenancer.domain.repository.PortfolioRepository
 class StubPortfolioRepository @Inject constructor() : PortfolioRepository {
 
     override fun getPortfolioByID(portfolioID: Int): Portfolio? =
-        StubData.portfolioList.find { it.id == portfolioID }
+        StubData.portfolioList.find { it.portfolioId == portfolioID }
 
     override fun getAllPortfolios(): List<Portfolio> =
         StubData.portfolioList

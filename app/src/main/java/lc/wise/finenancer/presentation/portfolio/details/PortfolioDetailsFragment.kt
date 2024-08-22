@@ -42,7 +42,7 @@ class PortfolioDetailsFragment : BaseFragment<FragmentPortfolioDetailsBinding>()
         viewModel.portfolio.observe(viewLifecycleOwner) { portfolio ->
             portfolio?.let {
                 with(binding) {
-                    portfolioName.text = portfolio.name
+                    portfolioName.text = portfolio.portfolioName
                     portfolioAssets.text = getString(
                         R.string.assets_in_portfolio,
                         portfolio.assetsList.size
@@ -58,19 +58,19 @@ class PortfolioDetailsFragment : BaseFragment<FragmentPortfolioDetailsBinding>()
                     is AssetUI.CashUI ->
                         PortfolioDetailsFragmentDirections
                             .actionPortfolioDetailsFragmentToAssetDetailsCashFragment(
-                                asset.id
+                                asset.assetId
                             )
 
                     is AssetUI.StockUI ->
                         PortfolioDetailsFragmentDirections
                             .actionPortfolioDetailsFragmentToAssetDetailsStockFragment(
-                                asset.id
+                                asset.assetId
                             )
 
                     is AssetUI.BondUI ->
                         PortfolioDetailsFragmentDirections
                             .actionPortfolioDetailsFragmentToAssetDetailsBondFragment(
-                                asset.id
+                                asset.assetId
                             )
                 }
                 findNavController().navigate(action)

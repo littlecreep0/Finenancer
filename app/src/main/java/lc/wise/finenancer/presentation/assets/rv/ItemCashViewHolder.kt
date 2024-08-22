@@ -12,7 +12,7 @@ class ItemCashViewHolder(
     override fun bind(cashUI: AssetUI.CashUI, onClick: (AssetUI.CashUI) -> Unit) {
         with(binding) {
             cashIcon.setImageResource(R.drawable.ic_launcher_foreground)
-            cashName.text = cashUI.name
+            cashName.text = cashUI.assetName
             cashWorth.text = cashUI.worth.toString()
             root.setOnClickListener {
                 onClick(cashUI)

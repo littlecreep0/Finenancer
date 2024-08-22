@@ -35,14 +35,14 @@ class StubPortfolioEntity @Inject constructor(
     override fun getAllPortfolios(): List<Portfolio> =
         portfolioDao.getPortfolioList().map { portfolioEntity ->
             portfolioEntity.toPortfolio(
-                getAssetsListOfPortfolio(portfolioEntity.id)
+                getAssetsListOfPortfolio(portfolioEntity.portfolioId)
             )
         }
 
     override fun savePortfolio(portfolio: Portfolio): Portfolio {
         portfolioDao.savePortfolio(portfolio.toPortfolioEntity())
-        return portfolioDao.getPortfolioById(portfolio.id).toPortfolio(
-            getAssetsListOfPortfolio(portfolio.id)
+        return portfolioDao.getPortfolioById(portfolio.portfolioId).toPortfolio(
+            getAssetsListOfPortfolio(portfolio.portfolioId)
         )
     }
 

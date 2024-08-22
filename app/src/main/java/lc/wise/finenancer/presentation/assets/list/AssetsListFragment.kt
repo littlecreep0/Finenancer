@@ -43,19 +43,19 @@ class AssetsListFragment : BaseFragment<FragmentAssetsListBinding>() {
                     is AssetUI.CashUI ->
                         AssetsListFragmentDirections
                             .actionAssetsListFragmentToAssetDetailsCashFragment(
-                                asset.id
+                                asset.assetId
                             )
 
                     is AssetUI.StockUI ->
                         AssetsListFragmentDirections
                             .actionAssetsListFragmentToAssetDetailsStockFragment(
-                                asset.id
+                                asset.assetId
                             )
 
                     is AssetUI.BondUI ->
                         AssetsListFragmentDirections
                             .actionAssetsListFragmentToAssetDetailsBondFragment(
-                                asset.id
+                                asset.assetId
                             )
                 }
                 findNavController().navigate(action)
