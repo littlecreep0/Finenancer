@@ -23,15 +23,20 @@ class SettingsViewModel @Inject constructor(
     val currenciesList: LiveData<List<Currency>> get() = _currenciesList
 
     init {
-        loadSettings()
+//        loadSettings()
+        viewModelScope.launch {
+            settingStore.getDefaultCurrency().collect {
+                _settings.postValue(it)
+            }
+        }
         loadCurrencies()
     }
 
-    private fun loadSettings() {
-        viewModelScope.launch {
-            _settings.value = settingStore.getDefaultCurrency()
-        }
-    }
+//    private fun loadSettings() {
+//        viewModelScope.launch {
+//            _settings.value = settingStore.getDefaultCurrency()
+//        }
+//    }
 
     private fun loadCurrencies() {
         viewModelScope.launch {
