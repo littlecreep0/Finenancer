@@ -8,5 +8,5 @@ class PortfolioListDiffUtil : DiffUtil.ItemCallback<Portfolio>() {
         oldItem.id == newItem.id
 
     override fun areContentsTheSame(oldItem: Portfolio, newItem: Portfolio): Boolean =
-        oldItem == newItem
+        oldItem.javaClass.name == newItem.javaClass.name
 }

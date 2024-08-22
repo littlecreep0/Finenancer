@@ -8,5 +8,10 @@ class AssetsListDiffUtil : DiffUtil.ItemCallback<AssetUI>() {
         oldItem.id == newItem.id
 
     override fun areContentsTheSame(oldItem: AssetUI, newItem: AssetUI): Boolean =
-        oldItem == newItem
+        oldItem.javaClass.name == newItem.javaClass.name &&
+            when (oldItem) {
+                is AssetUI.CashUI -> oldItem == newItem
+                is AssetUI.BondUI -> oldItem == newItem
+                is AssetUI.StockUI -> oldItem == newItem
+            }
 }
