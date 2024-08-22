@@ -4,13 +4,13 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
 import kotlinx.serialization.json.Json
-import lc.wise.finenancer.data.api.ApiCurrencyExchangeRate
+import lc.wise.finenancer.data.api.ApiCurrencyExchangeRateService
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -20,8 +20,8 @@ object NetworkModule {
     @Singleton
     fun provideExchangeRateApi(
         retrofit: Retrofit
-    ): ApiCurrencyExchangeRate {
-        return retrofit.create(ApiCurrencyExchangeRate::class.java)
+    ): ApiCurrencyExchangeRateService {
+        return retrofit.create(ApiCurrencyExchangeRateService::class.java)
     }
 
     @Provides
@@ -33,17 +33,22 @@ object NetworkModule {
 
     @Provides
     @Singleton
+    fun provideConverterFactory(): retrofit2.Converter.Factory {
+        return Json.asConverterFactory(
+            "application/json; charset=utf8".toMediaType()
+        )
+    }
+
+    @Provides
+    @Singleton
     fun provideRetrofit(
-        okHttpClient: OkHttpClient
+        okHttpClient: OkHttpClient,
+        converterFactory: retrofit2.Converter.Factory
     ): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://api.nbrb.by")
             .client(okHttpClient)
-            .addConverterFactory(
-                Json.asConverterFactory(
-                    "application/json; charset=utf8".toMediaType()
-                )
-            )
+            .addConverterFactory(converterFactory)
             .build()
     }
 }
