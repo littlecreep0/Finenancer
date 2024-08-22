@@ -8,5 +8,5 @@ class CurrencyBottomSheetDiffUtil : DiffUtil.ItemCallback<Currency>() {
         oldItem.id == newItem.id
 
     override fun areContentsTheSame(oldItem: Currency, newItem: Currency): Boolean =
-        oldItem.javaClass.name == newItem.javaClass.name
+        oldItem == newItem
 }
