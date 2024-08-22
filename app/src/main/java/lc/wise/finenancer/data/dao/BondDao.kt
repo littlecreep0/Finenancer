@@ -4,19 +4,26 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
-import lc.wise.finenancer.domain.entity.Asset.Bond
+import lc.wise.finenancer.data.entity.BondEntity
 
 @Dao
 interface BondDao {
     @Query("SELECT * FROM bonds_list")
-    fun getBondsList(): List<Bond>
+    fun getFullBondsList(): List<BondEntity>
+
+    @Query(
+        "SELECT * FROM bonds_list " +
+            "INNER JOIN assets_list ON bonds_list.id = assets_list.id " +
+            "WHERE portfolio_id = :portfolioID"
+    )
+    fun getBondsListByPortfolioID(portfolioID: Int): List<BondEntity>
 
     @Query("SELECT * FROM bonds_list WHERE id = :bondID")
-    fun getBondById(bondID: Int): Bond?
+    fun getBondById(bondID: Int): BondEntity
 
     @Upsert
-    fun saveBond(bond: Bond): Bond?
+    fun saveBond(bondEntity: BondEntity)
 
     @Delete
-    fun deleteBond(bondID: Int)
+    fun deleteBond(bondEntity: BondEntity)
 }

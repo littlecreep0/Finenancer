@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
-import lc.wise.finenancer.domain.entity.Asset
+import lc.wise.finenancer.data.entity.AssetEntity
 
 @Dao
 interface AssetDao {
@@ -14,9 +14,12 @@ interface AssetDao {
     @Query("SELECT id FROM assets_list ORDER BY id DESC LIMIT 1")
     fun getLastAssetID(): Int
 
+    @Query("SELECT * FROM assets_list WHERE id = :assetID")
+    fun getAssetByID(assetID: Int): AssetEntity
+
     @Upsert
-    fun saveAsset(asset: Asset): Asset?
+    fun saveAsset(assetEntity: AssetEntity)
 
     @Delete
-    fun deleteAsset(assetID: Int)
+    fun deleteAsset(assetEntity: AssetEntity)
 }

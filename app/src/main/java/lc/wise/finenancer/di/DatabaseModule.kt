@@ -11,13 +11,15 @@ import javax.inject.Singleton
 import lc.wise.finenancer.data.dao.AssetDao
 import lc.wise.finenancer.data.dao.BondDao
 import lc.wise.finenancer.data.dao.CashDao
+import lc.wise.finenancer.data.dao.CountryDao
+import lc.wise.finenancer.data.dao.CurrencyDao
 import lc.wise.finenancer.data.dao.PortfolioDao
 import lc.wise.finenancer.data.dao.StockDao
 import lc.wise.finenancer.data.database.AppDatabase
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface DatabaseModule {
+object DatabaseModule {
     @Provides
     @Singleton
     fun provideAppDatabase(
@@ -52,4 +54,14 @@ interface DatabaseModule {
     fun provideBondDao(
         appDatabase: AppDatabase
     ): BondDao = appDatabase.bondDao()
+
+    @Provides
+    fun provideCountryDao(
+        appDatabase: AppDatabase
+    ): CountryDao = appDatabase.countryDao()
+
+    @Provides
+    fun provideCurrencyDao(
+        appDatabase: AppDatabase
+    ): CurrencyDao = appDatabase.currencyDao()
 }

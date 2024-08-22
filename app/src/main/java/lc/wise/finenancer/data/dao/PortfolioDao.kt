@@ -4,19 +4,19 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
-import lc.wise.finenancer.domain.entity.Portfolio
+import lc.wise.finenancer.data.entity.PortfolioEntity
 
 @Dao
 interface PortfolioDao {
     @Query("SELECT * FROM portfolio_list")
-    fun getPortfolioList(): List<Portfolio>
+    fun getPortfolioList(): List<PortfolioEntity>
 
     @Query("SELECT * FROM portfolio_list WHERE id = :portfolioID")
-    fun getPortfolioById(portfolioID: Int): Portfolio?
+    fun getPortfolioById(portfolioID: Int): PortfolioEntity
 
     @Upsert
-    fun savePortfolio(portfolio: Portfolio): Portfolio?
+    fun savePortfolio(portfolioEntity: PortfolioEntity)
 
     @Delete
-    fun deletePortfolio(portfolioID: Int)
+    fun deletePortfolio(portfolioEntity: PortfolioEntity)
 }

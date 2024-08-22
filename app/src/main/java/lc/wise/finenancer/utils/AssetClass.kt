@@ -1,4 +1,4 @@
-package lc.wise.finenancer.presentation.utils
+package lc.wise.finenancer.utils
 
 enum class AssetClass(
     val type: String

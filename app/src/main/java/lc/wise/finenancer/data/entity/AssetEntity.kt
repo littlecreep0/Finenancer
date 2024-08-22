@@ -1,24 +1,31 @@
 package lc.wise.finenancer.data.entity
 
 import androidx.room.ColumnInfo
-import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
-import androidx.room.Ignore
+import androidx.room.Index
 import androidx.room.PrimaryKey
-import java.time.LocalDate
-import lc.wise.finenancer.domain.entity.Country
-import lc.wise.finenancer.domain.entity.Currency
 
 @Entity(
-    tableName = "assets_list"
+    tableName = "assets_list",
+    foreignKeys = [
+        ForeignKey(
+            entity = PortfolioEntity::class,
+            parentColumns = arrayOf("id"),
+            childColumns = arrayOf("portfolio_id"),
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE
+        )
+    ],
+    indices = [
+        Index(value = ["portfolio_id"])
+    ]
 )
 open class AssetEntity(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id") open val id: Int,
+    @ColumnInfo(name = "id") open val id: Int = 0,
     @ColumnInfo(name = "type") open val type: String,
-    @Ignore open val name: String,
-    @Ignore open val currency: Currency
+    @ColumnInfo(name = "portfolio_id") open val portfolioId: Int?
 )
 
 @Entity(
@@ -28,19 +35,28 @@ open class AssetEntity(
             entity = AssetEntity::class,
             parentColumns = arrayOf("id"),
             childColumns = arrayOf("id"),
-            onDelete = ForeignKey.CASCADE
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = CurrencyEntity::class,
+            parentColumns = arrayOf("currency_id"),
+            childColumns = arrayOf("currency_id"),
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE
         )
+    ],
+    indices = [
+        Index(value = ["currency_id"])
     ]
 )
 data class CashEntity(
     @PrimaryKey
-    @ColumnInfo(name = "id") override val id: Int,
-    @Ignore override val type: String,
-    @ColumnInfo(name = "name") override val name: String,
-    @Embedded
-    @ColumnInfo(name = "currency") override val currency: Currency,
+    @ColumnInfo(name = "id") val id: Int,
+    @ColumnInfo(name = "name") val name: String,
+    @ColumnInfo(name = "currency_id") val currencyId: Int,
     @ColumnInfo(name = "worth") val worth: Double
-) : AssetEntity(id, type, name, currency)
+)
 
 @Entity(
     tableName = "stocks_list",
@@ -49,22 +65,38 @@ data class CashEntity(
             entity = AssetEntity::class,
             parentColumns = arrayOf("id"),
             childColumns = arrayOf("id"),
-            onDelete = ForeignKey.CASCADE
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = CountryEntity::class,
+            parentColumns = arrayOf("country_id"),
+            childColumns = arrayOf("country_id"),
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = CurrencyEntity::class,
+            parentColumns = arrayOf("currency_id"),
+            childColumns = arrayOf("currency_id"),
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE
         )
+    ],
+    indices = [
+        Index(value = ["country_id"]),
+        Index(value = ["currency_id"])
     ]
 )
 data class StockEntity(
     @PrimaryKey
-    @ColumnInfo(name = "id") override val id: Int,
-    @Ignore override val type: String,
-    @ColumnInfo(name = "name") override val name: String,
-    @Embedded
-    @ColumnInfo(name = "currency") override val currency: Currency,
+    @ColumnInfo(name = "id") val id: Int,
+    @ColumnInfo(name = "name") val name: String,
+    @ColumnInfo(name = "currency_id") val currencyId: Int,
     @ColumnInfo(name = "ticker") val ticker: String,
-    @Embedded
-    @ColumnInfo(name = "country") val country: Country,
+    @ColumnInfo(name = "country_id") val countryId: Int,
     @ColumnInfo(name = "dividends") val dividends: Double
-) : AssetEntity(id, type, name, currency)
+)
 
 @Entity(
     tableName = "bonds_list",
@@ -75,20 +107,36 @@ data class StockEntity(
             childColumns = arrayOf("id"),
             onDelete = ForeignKey.CASCADE,
             onUpdate = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = CountryEntity::class,
+            parentColumns = arrayOf("country_id"),
+            childColumns = arrayOf("country_id"),
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = CurrencyEntity::class,
+            parentColumns = arrayOf("currency_id"),
+            childColumns = arrayOf("currency_id"),
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE
         )
+    ],
+    indices = [
+        Index(value = ["country_id"]),
+        Index(value = ["currency_id"])
     ]
 )
 data class BondEntity(
     @PrimaryKey
-    @ColumnInfo(name = "id") override val id: Int,
-    @Ignore override val type: String,
-    @ColumnInfo(name = "name") override val name: String,
-    @Embedded
-    @ColumnInfo(name = "currency") override val currency: Currency,
+    @ColumnInfo(name = "id") val id: Int,
+    @ColumnInfo(name = "name") val name: String,
+    @ColumnInfo(name = "currency_id") val currencyId: Int,
     @ColumnInfo(name = "ticker") val ticker: String,
-    @Embedded
-    @ColumnInfo(name = "country") val country: Country,
+    @ColumnInfo(name = "country_id") val countryId: Int,
     @ColumnInfo(name = "fixed_payment") val fixedPayment: Double,
-    @Embedded
-    @ColumnInfo(name = "maturity_date") val maturityDate: LocalDate
-) : AssetEntity(id, type, name, currency)
+    @ColumnInfo(name = "maturity_date_day") val maturityDateDay: Int,
+    @ColumnInfo(name = "maturity_date_month") val maturityDateMonth: Int,
+    @ColumnInfo(name = "maturity_date_year") val maturityDateYear: Int
+)

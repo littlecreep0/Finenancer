@@ -9,6 +9,7 @@ import lc.wise.finenancer.databinding.ItemStockBinding
 import lc.wise.finenancer.presentation.assets.rv.ItemBondViewHolder
 import lc.wise.finenancer.presentation.assets.rv.ItemCashViewHolder
 import lc.wise.finenancer.presentation.assets.rv.ItemStockViewHolder
+import lc.wise.finenancer.utils.AssetClass
 
 interface TypeFactory {
     fun type(cashUI: AssetUI.CashUI): Int
