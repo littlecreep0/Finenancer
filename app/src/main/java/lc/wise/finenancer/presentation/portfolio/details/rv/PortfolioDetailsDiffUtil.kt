@@ -8,10 +8,9 @@ class PortfolioDetailsDiffUtil : DiffUtil.ItemCallback<AssetUI>() {
         oldItem.id == newItem.id
 
     override fun areContentsTheSame(oldItem: AssetUI, newItem: AssetUI): Boolean =
-        oldItem == newItem &&
-            when (oldItem) {
-                is AssetUI.CashUI -> oldItem == newItem
-                is AssetUI.BondUI -> oldItem == newItem
-                is AssetUI.StockUI -> oldItem == newItem
-            }
+        when (oldItem) {
+            is AssetUI.CashUI -> oldItem == newItem
+            is AssetUI.BondUI -> oldItem == newItem
+            is AssetUI.StockUI -> oldItem == newItem
+        }
 }
