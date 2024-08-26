@@ -6,7 +6,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import lc.wise.finenancer.data.stub.StubData
@@ -18,12 +18,12 @@ class StubSettingStoreRepository @Inject constructor(
 
     private val key = stringPreferencesKey("default_currency")
 
-    override suspend fun getDefaultCurrency(): String {
+    override suspend fun getDefaultCurrency(): Flow<String> {
         return withContext(Dispatchers.IO) {
             dataStore.data.map { settings ->
                 settings[key]
                     ?: StubData.currencyList.firstOrNull()?.currencyName.orEmpty()
-            }.first()
+            }
         }
     }
 
