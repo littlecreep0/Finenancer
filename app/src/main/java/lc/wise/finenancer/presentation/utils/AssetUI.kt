@@ -44,9 +44,3 @@ sealed class AssetUI(
         override fun type(typeFactory: TypeFactory) = typeFactory.type(this)
     }
 }
-
-enum class AssetClass {
-    CASH,
-    STOCK,
-    BOND
-}

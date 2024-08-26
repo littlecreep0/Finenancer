@@ -1,8 +1,8 @@
 package lc.wise.finenancer.domain.interactors
 
+import javax.inject.Inject
 import lc.wise.finenancer.domain.entity.CurrencyExchangeRate
 import lc.wise.finenancer.domain.repository.CurrencyExchangeRateRepository
-import javax.inject.Inject
 
 class CurrencyExchangeRateInteractor @Inject constructor(
     private val currencyExchangeRateRepository: CurrencyExchangeRateRepository
