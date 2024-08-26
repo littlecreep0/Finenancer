@@ -1,7 +1,7 @@
 package lc.wise.finenancer.domain.entity
 
 data class Portfolio(
-    val id: Int,
-    val name: String,
+    val portfolioId: Int,
+    val portfolioName: String,
     val assetsList: List<Asset>
 )

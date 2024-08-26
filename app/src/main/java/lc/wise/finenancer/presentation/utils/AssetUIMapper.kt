@@ -3,27 +3,27 @@ package lc.wise.finenancer.presentation.utils
 import lc.wise.finenancer.domain.entity.Asset
 
 fun Asset.Cash.toCashUI() = AssetUI.CashUI(
-    id = id,
-    name = name,
-    currency = currency.name,
+    assetId = assetId,
+    assetName = assetName,
+    currency = currency.currencyName,
     worth = worth
 )
 
 fun Asset.Stock.toStockUI() = AssetUI.StockUI(
-    id = id,
-    name = name,
-    currency = currency.name,
+    assetId = assetId,
+    assetName = assetName,
+    currency = currency.currencyName,
     ticker = ticker,
-    country = country.name,
+    country = country.countryName,
     dividends = dividends
 )
 
 fun Asset.Bond.toBondUI() = AssetUI.BondUI(
-    id = id,
-    name = name,
-    currency = currency.name,
+    assetId = assetId,
+    assetName = assetName,
+    currency = currency.currencyName,
     ticker = ticker,
-    country = country.name,
+    country = country.countryName,
     fixedPayment = fixedPayment,
     maturityDateDay = maturityDate.dayOfMonth,
     maturityDateMonth = maturityDate.monthValue,

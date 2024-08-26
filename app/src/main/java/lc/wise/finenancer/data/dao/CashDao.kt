@@ -13,12 +13,12 @@ interface CashDao {
 
     @Query(
         "SELECT * FROM cash_list " +
-            "INNER JOIN assets_list ON cash_list.id = assets_list.id " +
+            "INNER JOIN assets_list ON cash_list.asset_id = assets_list.asset_id " +
             "WHERE portfolio_id = :portfolioID"
     )
     fun getCashListByPortfolioID(portfolioID: Int): List<CashEntity>
 
-    @Query("SELECT * FROM cash_list WHERE id = :cashID")
+    @Query("SELECT * FROM cash_list WHERE asset_id = :cashID")
     fun getCashById(cashID: Int): CashEntity
 
     @Upsert

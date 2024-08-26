@@ -37,7 +37,7 @@ class AssetDetailsCashFragment : BaseFragment<FragmentCashDetailsBinding>() {
         viewModel.cash.observe(viewLifecycleOwner) { cash ->
             cash?.let {
                 with(binding) {
-                    cashName.text = cash.name
+                    cashName.text = cash.assetName
                     cashWorth.text = getString(
                         R.string.worth,
                         cash.worth

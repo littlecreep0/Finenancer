@@ -11,7 +11,7 @@ class PortfolioListViewHolder(
     fun bind(portfolio: Portfolio, onClick: (Portfolio) -> Unit) {
         with(binding) {
             portfolioIcon.setImageResource(R.drawable.ic_launcher_foreground)
-            portfolioName.text = portfolio.name
+            portfolioName.text = portfolio.portfolioName
             portfolioAssetsAmount.text = root.context.getString(
                 R.string.assets_in_portfolio,
                 portfolio.assetsList.size

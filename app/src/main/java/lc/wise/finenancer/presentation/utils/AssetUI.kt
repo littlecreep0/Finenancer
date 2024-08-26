@@ -5,34 +5,34 @@ interface ViewType {
 }
 
 sealed class AssetUI(
-    open val id: Int,
-    open val name: String,
+    open val assetId: Int,
+    open val assetName: String,
     open val currency: String
 ) : ViewType {
 
     data class CashUI(
-        override val id: Int,
-        override val name: String,
+        override val assetId: Int,
+        override val assetName: String,
         override val currency: String,
         val worth: Double
-    ) : AssetUI(id, name, currency) {
+    ) : AssetUI(assetId, assetName, currency) {
         override fun type(typeFactory: TypeFactory) = typeFactory.type(this)
     }
 
     data class StockUI(
-        override val id: Int,
-        override val name: String,
+        override val assetId: Int,
+        override val assetName: String,
         override val currency: String,
         val ticker: String,
         val country: String,
         val dividends: Double
-    ) : AssetUI(id, name, currency) {
+    ) : AssetUI(assetId, assetName, currency) {
         override fun type(typeFactory: TypeFactory) = typeFactory.type(this)
     }
 
     data class BondUI(
-        override val id: Int,
-        override val name: String,
+        override val assetId: Int,
+        override val assetName: String,
         override val currency: String,
         val ticker: String,
         val country: String,
@@ -40,7 +40,7 @@ sealed class AssetUI(
         val maturityDateDay: Int,
         val maturityDateMonth: Int,
         val maturityDateYear: Int
-    ) : AssetUI(id, name, currency) {
+    ) : AssetUI(assetId, assetName, currency) {
         override fun type(typeFactory: TypeFactory) = typeFactory.type(this)
     }
 }

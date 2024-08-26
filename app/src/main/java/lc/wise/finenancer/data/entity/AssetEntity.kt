@@ -11,7 +11,7 @@ import androidx.room.PrimaryKey
     foreignKeys = [
         ForeignKey(
             entity = PortfolioEntity::class,
-            parentColumns = arrayOf("id"),
+            parentColumns = arrayOf("portfolio_id"),
             childColumns = arrayOf("portfolio_id"),
             onDelete = ForeignKey.CASCADE,
             onUpdate = ForeignKey.CASCADE
@@ -23,8 +23,8 @@ import androidx.room.PrimaryKey
 )
 open class AssetEntity(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id") open val id: Int = 0,
-    @ColumnInfo(name = "type") open val type: String,
+    @ColumnInfo(name = "asset_id") open val assetId: Int = 0,
+    @ColumnInfo(name = "asset_type") open val assetType: String,
     @ColumnInfo(name = "portfolio_id") open val portfolioId: Int?
 )
 
@@ -33,8 +33,8 @@ open class AssetEntity(
     foreignKeys = [
         ForeignKey(
             entity = AssetEntity::class,
-            parentColumns = arrayOf("id"),
-            childColumns = arrayOf("id"),
+            parentColumns = arrayOf("asset_id"),
+            childColumns = arrayOf("asset_id"),
             onDelete = ForeignKey.CASCADE,
             onUpdate = ForeignKey.CASCADE
         ),
@@ -52,8 +52,8 @@ open class AssetEntity(
 )
 data class CashEntity(
     @PrimaryKey
-    @ColumnInfo(name = "id") val id: Int,
-    @ColumnInfo(name = "name") val name: String,
+    @ColumnInfo(name = "asset_id") val assetId: Int,
+    @ColumnInfo(name = "asset_name") val assetName: String,
     @ColumnInfo(name = "currency_id") val currencyId: Int,
     @ColumnInfo(name = "worth") val worth: Double
 )
@@ -63,8 +63,8 @@ data class CashEntity(
     foreignKeys = [
         ForeignKey(
             entity = AssetEntity::class,
-            parentColumns = arrayOf("id"),
-            childColumns = arrayOf("id"),
+            parentColumns = arrayOf("asset_id"),
+            childColumns = arrayOf("asset_id"),
             onDelete = ForeignKey.CASCADE,
             onUpdate = ForeignKey.CASCADE
         ),
@@ -90,8 +90,8 @@ data class CashEntity(
 )
 data class StockEntity(
     @PrimaryKey
-    @ColumnInfo(name = "id") val id: Int,
-    @ColumnInfo(name = "name") val name: String,
+    @ColumnInfo(name = "asset_id") val assetId: Int,
+    @ColumnInfo(name = "asset_name") val assetName: String,
     @ColumnInfo(name = "currency_id") val currencyId: Int,
     @ColumnInfo(name = "ticker") val ticker: String,
     @ColumnInfo(name = "country_id") val countryId: Int,
@@ -103,8 +103,8 @@ data class StockEntity(
     foreignKeys = [
         ForeignKey(
             entity = AssetEntity::class,
-            parentColumns = arrayOf("id"),
-            childColumns = arrayOf("id"),
+            parentColumns = arrayOf("asset_id"),
+            childColumns = arrayOf("asset_id"),
             onDelete = ForeignKey.CASCADE,
             onUpdate = ForeignKey.CASCADE
         ),
@@ -130,8 +130,8 @@ data class StockEntity(
 )
 data class BondEntity(
     @PrimaryKey
-    @ColumnInfo(name = "id") val id: Int,
-    @ColumnInfo(name = "name") val name: String,
+    @ColumnInfo(name = "asset_id") val assetId: Int,
+    @ColumnInfo(name = "asset_name") val assetName: String,
     @ColumnInfo(name = "currency_id") val currencyId: Int,
     @ColumnInfo(name = "ticker") val ticker: String,
     @ColumnInfo(name = "country_id") val countryId: Int,

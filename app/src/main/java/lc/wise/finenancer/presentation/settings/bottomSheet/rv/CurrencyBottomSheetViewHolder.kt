@@ -10,7 +10,7 @@ class CurrencyBottomSheetViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(currency: Currency) {
-        binding.currencyName.text = currency.name
+        binding.currencyName.text = currency.currencyName
         itemView.setOnClickListener {
             onCurrencySelected(currency)
         }

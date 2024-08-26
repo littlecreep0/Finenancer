@@ -13,38 +13,38 @@ import lc.wise.finenancer.domain.entity.Currency
 import lc.wise.finenancer.domain.entity.Portfolio
 
 fun CurrencyEntity.toCurrency() = Currency(
-    id = currencyId,
-    name = currencyName
+    currencyId = currencyId,
+    currencyName = currencyName
 )
 
 fun Currency.toCurrencyEntity() = CurrencyEntity(
-    currencyId = id,
-    currencyName = name
+    currencyId = currencyId,
+    currencyName = currencyName
 )
 
 fun CountryEntity.toCountry() = Country(
-    id = countryId,
-    name = countryName
+    countryId = countryId,
+    countryName = countryName
 )
 
 fun Country.toCountryEntity() = CountryEntity(
-    countryId = id,
-    countryName = name
+    countryId = countryId,
+    countryName = countryName
 )
 
 fun CashEntity.toCash(
     currency: Currency
 ) = Asset.Cash(
-    id = id,
-    name = name,
+    assetId = assetId,
+    assetName = assetName,
     currency = currency,
     worth = worth
 )
 
 fun Asset.Cash.toCashEntity() = CashEntity(
-    id = id,
-    name = name,
-    currencyId = currency.id,
+    assetId = assetId,
+    assetName = assetName,
+    currencyId = currency.currencyId,
     worth = worth
 )
 
@@ -52,8 +52,8 @@ fun StockEntity.toStock(
     currency: Currency,
     country: Country
 ) = Asset.Stock(
-    id = id,
-    name = name,
+    assetId = assetId,
+    assetName = assetName,
     currency = currency,
     ticker = ticker,
     country = country,
@@ -61,11 +61,11 @@ fun StockEntity.toStock(
 )
 
 fun Asset.Stock.toStockEntity() = StockEntity(
-    id = id,
-    name = name,
-    currencyId = currency.id,
+    assetId = assetId,
+    assetName = assetName,
+    currencyId = currency.currencyId,
     ticker = ticker,
-    countryId = country.id,
+    countryId = country.countryId,
     dividends = dividends
 )
 
@@ -73,8 +73,8 @@ fun BondEntity.toBond(
     currency: Currency,
     country: Country
 ) = Asset.Bond(
-    id = id,
-    name = name,
+    assetId = assetId,
+    assetName = assetName,
     currency = currency,
     ticker = ticker,
     country = country,
@@ -87,11 +87,11 @@ fun BondEntity.toBond(
 )
 
 fun Asset.Bond.toBondEntity() = BondEntity(
-    id = id,
-    name = name,
-    currencyId = currency.id,
+    assetId = assetId,
+    assetName = assetName,
+    currencyId = currency.currencyId,
     ticker = ticker,
-    countryId = country.id,
+    countryId = country.countryId,
     fixedPayment = fixedPayment,
     maturityDateDay = maturityDate.dayOfMonth,
     maturityDateMonth = maturityDate.monthValue,
@@ -101,12 +101,12 @@ fun Asset.Bond.toBondEntity() = BondEntity(
 fun PortfolioEntity.toPortfolio(
     assetsList: List<Asset>
 ) = Portfolio(
-    id = id,
-    name = name,
+    portfolioId = portfolioId,
+    portfolioName = portfolioName,
     assetsList = assetsList
 )
 
 fun Portfolio.toPortfolioEntity() = PortfolioEntity(
-    id = id,
-    name = name
+    portfolioId = portfolioId,
+    portfolioName = portfolioName
 )

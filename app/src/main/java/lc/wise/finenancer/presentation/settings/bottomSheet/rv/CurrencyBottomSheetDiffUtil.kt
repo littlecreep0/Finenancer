@@ -5,7 +5,7 @@ import lc.wise.finenancer.domain.entity.Currency
 
 class CurrencyBottomSheetDiffUtil : DiffUtil.ItemCallback<Currency>() {
     override fun areItemsTheSame(oldItem: Currency, newItem: Currency): Boolean =
-        oldItem.id == newItem.id
+        oldItem.currencyId == newItem.currencyId
 
     override fun areContentsTheSame(oldItem: Currency, newItem: Currency): Boolean =
         oldItem == newItem
